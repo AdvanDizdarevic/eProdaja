@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="34cdd1f461ce4c209bceecef2d4be1e9" Name="Diagram1">
+        <EntityTypeShape EntityType="marketNarudzbaModel.AkcijskiProizvodi" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Dobavljaci" Width="1.5" PointX="3.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Greska" Width="1.5" PointX="6.75" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.GreskaStavke" Width="1.5" PointX="9" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Izlazi" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.IzlazStavke" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.JediniceMjere" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.KategorijeProizvoda" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Korisnici" Width="1.5" PointX="3.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.KorisniciUloge" Width="1.5" PointX="9" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Kupci" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.NarudzbaStavke" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Narudzbe" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Novosti" Width="1.5" PointX="6" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Ocjene" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.PrijedlogKupca" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.PrijedlogKupcaStavke" Width="1.5" PointX="6" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Proizvodi" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Skladista" Width="1.5" PointX="3.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Ulazi" Width="1.5" PointX="6" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.UlazStavke" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.Uloge" Width="1.5" PointX="6.75" PointY="18" IsExpanded="true" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_AkcijskiProizvodi_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_AkcijskiProizvodi_Proizvodi" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Ulazi_Dobavljaci" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Greska_Kupci" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_GreskaStavke_Greska" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_GreskaStavke_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Izlazi_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Izlazi_Narudzbe" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Izlazi_Skladista" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_IzlazStavke_Izlazi" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_IzlazStavke_Proizvodi" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Proizvodi_JediniceMjere" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Proizvodi_KategorijeProizvoda" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_KorisniciUloge_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Novosti_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_PrijedlogKupcaStavke_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Ulazi_Korisnici" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_KorisniciUloge_Uloge" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Narudzbe_Kupci" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Ocjene_Kupci" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_PrijedlogKupca_Kupci" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_NarudzbaStavke_Narudzbe" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_NarudzbaStavke_Proizvodi" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Ocjene_Proizvodi" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_UlazStavke_Proizvodi" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_Ulazi_Skladista" ManuallyRouted="false" />
+        <AssociationConnector Association="marketNarudzbaModel.FK_UlazStavke_Ulazi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
