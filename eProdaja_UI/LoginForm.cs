@@ -1,5 +1,4 @@
 ﻿using eProdaja_API.Models;
-using eProdaja_UI.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,10 +9,12 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using eProdaja_UI.Util;
+
 
 namespace eProdaja_UI
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : MetroFramework.Forms.MetroForm
     {
 
         WebAPIHelper korisniciService = new WebAPIHelper("http://localhost:60271/", "api/Korisnici");
@@ -30,7 +31,7 @@ namespace eProdaja_UI
 
         private void prijavaBtn_Click(object sender, EventArgs e)
         {
-            HttpResponseMessage response = korisniciService.getResponse(txtKorisnickoIme.Text);
+            HttpResponseMessage response = korisniciService.getActionResponse("GetKorisniciByUsername", txtKorisnickoIme.Text);
             if(response.IsSuccessStatusCode)
             {
                 Korisnici k = response.Content.ReadAsAsync<Korisnici>().Result;
@@ -47,6 +48,12 @@ namespace eProdaja_UI
             {
                 MessageBox.Show("Greska oko validacije : Error code" + response + "Message" + response.ReasonPhrase);
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            txtKorisnickoIme.Text = "desktop";
+            txtLozinkaH.Text = "test";
         }
     }
 }

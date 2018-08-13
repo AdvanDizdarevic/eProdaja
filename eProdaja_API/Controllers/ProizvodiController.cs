@@ -42,6 +42,78 @@ namespace eProdaja_API.Controllers
             return db.esp_Proizvodi_SelectByVrsta(typeId).ToList();
         }
 
+        [HttpGet]
+        [Route("api/Proizvodi/GetProizvodStatus/{typeId}")]
+        public bool GetProizvodStatus(int typeId)
+        {
+            return db.Proizvodis.Find(typeId).Status;
+        }
+
+    
+
+        [HttpGet]
+        [Route("api/Proizvodi/GetProizvodiBySifra/{sifra?}")]
+        public List<esp_Proizvodi_SelectBySifra_Result> GetProizvodiBySifra(string sifra="")
+        {
+            return db.esp_Proizvodi_SelectBySifra(sifra).ToList();
+        }
+
+        [HttpGet]
+        [Route("api/Proizvodi/GetProizvodBySifra/{sifra?}")]
+        public esp_Proizvodi_SelectBySifra_Result GetProizvodBySifra(string sifra = "")
+        {
+            return db.esp_Proizvodi_SelectBySifra(sifra).FirstOrDefault();
+        }
+
+        [HttpGet]
+        [Route("api/Proizvodi/GetProizvodBySifraList/{sifra?}")]
+        public List<esp_Proizvodi_SelectBySifraList_Result> GetProizvodBySifraList(string sifra = "")
+        {
+            return db.esp_Proizvodi_SelectBySifraList(sifra).ToList();
+        }
+
+
+        [HttpGet]
+        [Route("api/Proizvodi/GetAktivniProizvodi/")]
+        public List<esp_Proizvodi_SelectAktivni_Result> GetAktivniProizvodi()
+        {
+            return db.esp_Proizvodi_SelectAktivni().ToList();
+        }
+
+
+        [HttpGet]
+        [Route("api/Proizvodi/GetNeaktivniProizvodi/")]
+        public List<esp_Proizvodi_SelectNeAktivni_Result> GetNeaktivniProizvodi()
+        {
+            return db.esp_Proizvodi_SelectNeAktivni().ToList();
+        }
+
+        // GET: api/Porizvodi/SkladisteStanje/1
+        [HttpGet]
+        [Route("api/Proizvodi/GetProzivodBySkladiste/{id}")]
+        public List<esp_Proizvodi_SelectBySkladiste_Result> GetProzivodBySkladiste(int id)
+        {
+            //  return db.esp_SelectProizvod_BySkladisteStanje(id).ToList();
+            return db.esp_Proizvodi_SelectBySkladiste(id).ToList();
+        }
+
+        // GET : api/Proizvodi/GetProizvodiByNaziv/{sifra?}
+        [HttpGet]
+        [Route("api/Proizvodi/GetProizvodiByNaziv/{naziv?}")]
+        public List<esp_Proizvodi_SelectByNaziv_Result> GetProizvodiByNaziv(string naziv = "")
+        {
+            return db.esp_Proizvodi_SelectByNaziv(naziv).ToList();
+        }
+
+        // GET: api/Porizvodi/NeocjenjeniProizvoidByKupacID
+        [HttpGet]
+        [Route("api/Proizvodi/GetNeocjenjeniProizvodi/{id}")]
+        public List<esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID_Result> GetNeocjenjeniProizvodi(int id)
+        {
+            //  return db.esp_SelectProizvod_BySkladisteStanje(id).ToList();
+            return db.esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID(id).ToList();
+        }
+
 
         // PUT: api/Proizvodi/5
         [ResponseType(typeof(void))]
@@ -103,7 +175,8 @@ namespace eProdaja_API.Controllers
                 return NotFound();
             }
 
-            db.Proizvodis.Remove(proizvodi);
+            //db.Proizvodis.Remove(proizvodi);
+            proizvodi.Status = false;
             db.SaveChanges();
 
             return Ok(proizvodi);

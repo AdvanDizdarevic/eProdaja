@@ -61,6 +61,51 @@ namespace eProdaja_UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Greska u komunikaciji sa apijem.
+        /// </summary>
+        internal static string api_error {
+            get {
+                return ResourceManager.GetString("api_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obavezan unos naziva.
+        /// </summary>
+        internal static string cat_name_req {
+            get {
+                return ResourceManager.GetString("cat_name_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kategorija uspjesno dodata,da li zelite dodati novu?.
+        /// </summary>
+        internal static string cat_succ {
+            get {
+                return ResourceManager.GetString("cat_succ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Datum mora biti veci ili jednak danasnjem !!.
+        /// </summary>
+        internal static string datum_err {
+            get {
+                return ResourceManager.GetString("datum_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspjesno obrisano!.
+        /// </summary>
+        internal static string del_succ {
+            get {
+                return ResourceManager.GetString("del_succ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Neispravan format maila.
         /// </summary>
         internal static string email_err {
@@ -88,11 +133,92 @@ namespace eProdaja_UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ne odgovara velicina slike.
+        /// </summary>
+        internal static string img_size_err {
+            get {
+                return ResourceManager.GetString("img_size_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        internal static string info {
+            get {
+                return ResourceManager.GetString("info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspjesno ste obrisali.
+        /// </summary>
+        internal static string item_del_succ {
+            get {
+                return ResourceManager.GetString("item_del_succ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item koji dodajete vec postoji!!.
+        /// </summary>
+        internal static string item_exist {
+            get {
+                return ResourceManager.GetString("item_exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Niste odabrani item.
+        /// </summary>
+        internal static string item_sel_err {
+            get {
+                return ResourceManager.GetString("item_sel_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nista dodali ni jedan proizvod!!.
+        /// </summary>
+        internal static string list_error {
+            get {
+                return ResourceManager.GetString("list_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unesena lozinka nije validna.
         /// </summary>
         internal static string login_pass_err {
             get {
                 return ResourceManager.GetString("login_pass_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspjesna nabavka.
+        /// </summary>
+        internal static string order_succ {
+            get {
+                return ResourceManager.GetString("order_succ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obavezno dodavanje slike !! .
+        /// </summary>
+        internal static string picture_err {
+            get {
+                return ResourceManager.GetString("picture_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obavezno dodavanje popusta!!.
+        /// </summary>
+        internal static string popust_err {
+            get {
+                return ResourceManager.GetString("popust_err", resourceCulture);
             }
         }
         
@@ -106,7 +232,52 @@ namespace eProdaja_UI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upozorenje.
+        ///   Looks up a localized string similar to Obavezno unijeti.
+        /// </summary>
+        internal static string required {
+            get {
+                return ResourceManager.GetString("required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspjesno izbrisano skladiste !!.
+        /// </summary>
+        internal static string skladiste_del_succ {
+            get {
+                return ResourceManager.GetString("skladiste_del_succ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skladiste error.
+        /// </summary>
+        internal static string skladiste_err {
+            get {
+                return ResourceManager.GetString("skladiste_err", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspjesno obavljeno.
+        /// </summary>
+        internal static string success {
+            get {
+                return ResourceManager.GetString("success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dobvljac uspjesno dodan, da li želite dodati jos jednog?.
+        /// </summary>
+        internal static string sup_succ_info {
+            get {
+                return ResourceManager.GetString("sup_succ_info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string warning {
             get {

@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="MetroFramework">
+      <HintPath>..\..\..\..\..\Desktop\Aplikacija-3148\marketNarudzbaV1.0\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -44,6 +49,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +61,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AkcijskiProizvodi\AddProductOnAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AkcijskiProizvodi\AddProductOnAction.designer.cs">
+      <DependentUpon>AddProductOnAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AkcijskiProizvodi\AddProductOnActionDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AkcijskiProizvodi\AddProductOnActionDetails.Designer.cs">
+      <DependentUpon>AddProductOnActionDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AkcijskiProizvodi\EditProductOnAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AkcijskiProizvodi\EditProductOnAction.designer.cs">
+      <DependentUpon>EditProductOnAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AkcijskiProizvodi\ProductActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AkcijskiProizvodi\ProductActionForm.designer.cs">
+      <DependentUpon>ProductActionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buyes\KupacNarudzbeDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyes\KupacNarudzbeDetalji.Designer.cs">
+      <DependentUpon>KupacNarudzbeDetalji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buyes\KupacOcjene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyes\KupacOcjene.Designer.cs">
+      <DependentUpon>KupacOcjene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buyes\KupciForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyes\KupciForm.Designer.cs">
+      <DependentUpon>KupciForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buyes\KupciNarudzbe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyes\KupciNarudzbe.Designer.cs">
+      <DependentUpon>KupciNarudzbe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buyes\KupciPrijedlozi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Buyes\KupciPrijedlozi.Designer.cs">
+      <DependentUpon>KupciPrijedlozi.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKorisnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +122,30 @@
       <DependentUpon>frmKorisnici.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="Izvjestaji\IzlaziIzSkladista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvjestaji\IzlaziIzSkladista.Designer.cs">
+      <DependentUpon>IzlaziIzSkladista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvjestaji\IzlaziReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvjestaji\IzlaziReport.Designer.cs">
+      <DependentUpon>IzlaziReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvjestaji\UlaziReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvjestaji\UlaziReport.Designer.cs">
+      <DependentUpon>UlaziReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Izvjestaji\UlaziUSkladiste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Izvjestaji\UlaziUSkladiste.Designer.cs">
+      <DependentUpon>UlaziUSkladiste.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,16 +158,87 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="marketNarudzbaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>marketNarudzbaDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Messages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Novosti\NovostiAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Novosti\NovostiAddForm.Designer.cs">
+      <DependentUpon>NovostiAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Novosti\NovostiEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Novosti\NovostiEditForm.Designer.cs">
+      <DependentUpon>NovostiEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Novosti\NovostiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Novosti\NovostiForm.Designer.cs">
+      <DependentUpon>NovostiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\ActiveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\ActiveForm.designer.cs">
+      <DependentUpon>ActiveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\DetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\DetailsForm.designer.cs">
+      <DependentUpon>DetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\AddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\AddCategory.Designer.cs">
+      <DependentUpon>AddCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Products\AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Products\AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\CategorijesInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\CategorijesInfo.Designer.cs">
+      <DependentUpon>CategorijesInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\EditCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\EditCategory.Designer.cs">
+      <DependentUpon>EditCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\EditProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\EditProductForm.Designer.cs">
+      <DependentUpon>EditProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ProductSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\ProductSearchForm.Designer.cs">
+      <DependentUpon>ProductSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\ProizvodiInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\ProizvodiInfoForm.Designer.cs">
+      <DependentUpon>ProizvodiInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Products\PurchaseForm.cs">
       <SubType>Form</SubType>
@@ -93,11 +248,70 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Skladista\AddWarehouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Skladista\AddWarehouseForm.designer.cs">
+      <DependentUpon>AddWarehouseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Skladista\EditWarehouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Skladista\EditWarehouseForm.designer.cs">
+      <DependentUpon>EditWarehouseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Skladista\StateWarehouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Skladista\StateWarehouseForm.designer.cs">
+      <DependentUpon>StateWarehouseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Skladista\WarehouseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Skladista\WarehouseForm.designer.cs">
+      <DependentUpon>WarehouseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supliers\AddSupplierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supliers\AddSupplierForm.designer.cs">
+      <DependentUpon>AddSupplierForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supliers\EditSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supliers\EditSupplier.designer.cs">
+      <DependentUpon>EditSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supliers\SearchSupplierFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supliers\SearchSupplierFrom.Designer.cs">
+      <DependentUpon>SearchSupplierFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supliers\SupliersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supliers\SupliersForm.designer.cs">
+      <DependentUpon>SupliersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Users\AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\InfoForm.cs">
       <SubType>Form</SubType>
@@ -107,9 +321,50 @@
     </Compile>
     <Compile Include="Util\UIHelper.cs" />
     <Compile Include="Util\WebAPIHelper.cs" />
+    <EmbeddedResource Include="AkcijskiProizvodi\AddProductOnAction.resx">
+      <DependentUpon>AddProductOnAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AkcijskiProizvodi\AddProductOnActionDetails.resx">
+      <DependentUpon>AddProductOnActionDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AkcijskiProizvodi\EditProductOnAction.resx">
+      <DependentUpon>EditProductOnAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AkcijskiProizvodi\ProductActionForm.resx">
+      <DependentUpon>ProductActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buyes\KupacNarudzbeDetalji.resx">
+      <DependentUpon>KupacNarudzbeDetalji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buyes\KupacOcjene.resx">
+      <DependentUpon>KupacOcjene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buyes\KupciForm.resx">
+      <DependentUpon>KupciForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buyes\KupciNarudzbe.resx">
+      <DependentUpon>KupciNarudzbe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Buyes\KupciPrijedlozi.resx">
+      <DependentUpon>KupciPrijedlozi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmKorisnici.resx">
       <DependentUpon>frmKorisnici.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji\IzlaziIzSkladista.resx">
+      <DependentUpon>IzlaziIzSkladista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji\IzlaziReport.rdlc" />
+    <EmbeddedResource Include="Izvjestaji\IzlaziReport.resx">
+      <DependentUpon>IzlaziReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji\UlaziReport.resx">
+      <DependentUpon>UlaziReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji\UlaziUSkladiste.resx">
+      <DependentUpon>UlaziUSkladiste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvjestaji\UlazReport.rdlc" />
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,25 +375,98 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Novosti\NovostiAddForm.resx">
+      <DependentUpon>NovostiAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Novosti\NovostiEditForm.resx">
+      <DependentUpon>NovostiEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Novosti\NovostiForm.resx">
+      <DependentUpon>NovostiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\ActiveForm.resx">
+      <DependentUpon>ActiveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\DetailsForm.resx">
+      <DependentUpon>DetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\AddCategory.resx">
+      <DependentUpon>AddCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Products\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Products\CategorijesInfo.resx">
+      <DependentUpon>CategorijesInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\EditCategory.resx">
+      <DependentUpon>EditCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\EditProductForm.resx">
+      <DependentUpon>EditProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ProductSearchForm.resx">
+      <DependentUpon>ProductSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\ProizvodiInfoForm.resx">
+      <DependentUpon>ProizvodiInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\PurchaseForm.resx">
+      <DependentUpon>PurchaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="Skladista\AddWarehouseForm.resx">
+      <DependentUpon>AddWarehouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Skladista\EditWarehouseForm.resx">
+      <DependentUpon>EditWarehouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Skladista\StateWarehouseForm.resx">
+      <DependentUpon>StateWarehouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Skladista\WarehouseForm.resx">
+      <DependentUpon>WarehouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supliers\AddSupplierForm.resx">
+      <DependentUpon>AddSupplierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supliers\EditSupplier.resx">
+      <DependentUpon>EditSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supliers\SearchSupplierFrom.resx">
+      <DependentUpon>SearchSupplierFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supliers\SupliersForm.resx">
+      <DependentUpon>SupliersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\AddForm.resx">
       <DependentUpon>AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="marketNarudzbaDataSet.xsc">
+      <DependentUpon>marketNarudzbaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="marketNarudzbaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>marketNarudzbaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="marketNarudzbaDataSet.xss">
+      <DependentUpon>marketNarudzbaDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\eProdaja_API.Models.esp_IzlaziStavkeByIzlazID_Result.datasource" />
+    <None Include="Properties\DataSources\eProdaja_API.Models.esp_NarudzbaStavke_SelectByNarudzbaID_Result.datasource" />
+    <None Include="Properties\DataSources\eProdaja_API.Models.esp_Narudzbe_SelectByNarudzbaId_Result.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -159,6 +487,16 @@
       <Project>{4f4bc67f-187f-4dd9-9ab0-ecb28b896c07}</Project>
       <Name>eProdaja_API</Name>
     </ProjectReference>
+    <ProjectReference Include="..\eProdaja_PCL\eProdaja_PCL.csproj">
+      <Project>{455F3616-6006-4574-A19A-14AF5A9FEE0E}</Project>
+      <Name>eProdaja_PCL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.jpg" />
+    <None Include="Resources\korisn.png" />
+    <Content Include="Slike\login.jpg" />
+    <Content Include="Slike\P54_DijagramKlasa.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

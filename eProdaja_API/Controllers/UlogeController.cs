@@ -35,6 +35,13 @@ namespace eProdaja_API.Controllers
             return Ok(uloge);
         }
 
+        [HttpGet]
+        [Route("api/Uloge/GetKorisnikId/{korisnikId}")]
+        public List<KorisniciUloge> GetKorisnikId(int korisnikId)
+        {
+            return db.KorisniciUloges.Where(x => x.KorisnikID == korisnikId).ToList();
+        }
+
         // PUT: api/Uloge/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUloge(int id, Uloge uloge)

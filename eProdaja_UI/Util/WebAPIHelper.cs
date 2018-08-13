@@ -1,10 +1,12 @@
-﻿using eProdaja_API.Models;
+﻿using eProdaja_UI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using eProdaja_UI.Util;
 
 namespace eProdaja_UI.Util
 {
@@ -24,7 +26,7 @@ namespace eProdaja_UI.Util
       public  HttpResponseMessage getResponse()
         {
             return client.GetAsync(route).Result;
-        }
+            }
 
         public HttpResponseMessage postResponse(Object newObject)
         {
@@ -38,17 +40,31 @@ namespace eProdaja_UI.Util
         }
 
 
+
         public HttpResponseMessage getActionResponse(string action, string parameter ="")
         {
             //api/Korisnici/SearchKorisnici/ime
             return client.GetAsync(route + "/" + action + "/" + parameter).Result;
         }
 
+
+
+
         public HttpResponseMessage putResponse(int id, Object existingObject)
         {
             return client.PutAsJsonAsync(route + "/" + id, existingObject).Result;
         }
 
-        
+
+
+        public HttpResponseMessage PostActionResponse(string action, Object izlaz)
+        {
+            return client.PostAsJsonAsync(route + "/" + action, izlaz).Result;
+        }
+
+       public HttpResponseMessage DeleteResponse(int id)
+       {
+           return client.DeleteAsync(route + "/" + id).Result;
+       }
     }
 }

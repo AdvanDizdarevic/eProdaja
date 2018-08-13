@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Advan\documents\visual studio 2015\Projects\eProdaja\eProdaja_API\Models\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Advan\Desktop\PEP DATA\PEP-SeminarskiRad-2803_v2\Aplikacija-2803\eProdaja\eProdaja_API\Models\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

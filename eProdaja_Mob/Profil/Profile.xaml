@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="eProdaja_Mob.Profil.Profile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:eProdaja_Mob.Profil"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid   x:Name="Layout" Style="{StaticResource LayoutGridStyle}">
+        <TextBlock FontSize="25">eBookStore::Profile</TextBlock>
+        <Grid HorizontalAlignment="Center">
+            <Button x:Name="urediPodatke" Click="UrediPodatke_OnClick" Content="Uredi podatke" Margin="24,130,0,453" Width="160" />
+        <Button x:Name="posaljiPrijedlog" Click="PosaljiPrijedlog_OnClick" Content="Pošalji prijedlog" Margin="24,242,0,341" Width="160" />
+        <Button x:Name="prijavaGreske" Click="PrijavaGreske_OnClick" Content="Prijava greške" RenderTransformOrigin="0.435,-1.744" Margin="24,352,0,231" Width="160" />
+               </Grid>
+        </Grid>
+</Page>

@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using eProdaja_API.Models;
-using eProdaja_UI.Util;
 using System.Net.Http;
 using System.IO;
 using System.Configuration;
+using eProdaja_UI.Util;
 
 namespace eProdaja_UI.Products
 {
-    public partial class AddForm : Form
+    public partial class AddForm : MetroFramework.Forms.MetroForm
     {
         WebAPIHelper vrstaService = new WebAPIHelper("http://localhost:60271/", "api/KategorijeProizvoda");
         WebAPIHelper jedinicaService = new WebAPIHelper("http://localhost:60271/", "api/JediniceMjere");
@@ -32,8 +32,8 @@ namespace eProdaja_UI.Products
         {
             BindVrstaProizvoda();
             BindJediniceMjere();
-           // HttpResponseMessage response = proizvodiService.getResponse();
-           //dataGridView1.DataSource = response.Content.ReadAsAsync<List<Proizvodi>>().Result;
+            // HttpResponseMessage response = proizvodiService.getResponse();
+            //dataGridView1.DataSource = response.Content.ReadAsAsync<List<Proizvodi>>().Result;
 
 
         }
@@ -51,7 +51,7 @@ namespace eProdaja_UI.Products
             }
         }
 
-        private void BindVrstaProizvoda()   
+        private void BindVrstaProizvoda()
         {
             HttpResponseMessage response = vrstaService.getResponse();
             if (response.IsSuccessStatusCode)
@@ -61,7 +61,7 @@ namespace eProdaja_UI.Products
                 comboVrsta.DataSource = kategorija;
                 comboVrsta.DisplayMember = "Naziv";
                 comboVrsta.ValueMember = "KategorijaID";
-      
+
             }
         }
 
@@ -92,13 +92,14 @@ namespace eProdaja_UI.Products
 
                     Image croppedImage = resizedImage;
 
-                    int croppedXPosition = (resizedImage.Width - croppedImgWidth) / 2;
-                    int croppedYPosition = (resizedImage.Height - croppedImgHeight) / 2;
+                    int croppedXPosition = (resizedImage.Width - croppedImgWidth)/2;
+                    int croppedYPosition = (resizedImage.Height - croppedImgHeight)/2;
 
                     if (resizedImage.Width >= croppedImgWidth && resizedImage.Height >= croppedImgHeight)
                     {
 
-                        croppedImage = UIHelper.CropImage(resizedImage, new Rectangle(croppedXPosition, croppedYPosition, croppedImgWidth, croppedImgHeight));
+                        croppedImage = UIHelper.CropImage(resizedImage,
+                            new Rectangle(croppedXPosition, croppedYPosition, croppedImgWidth, croppedImgHeight));
                         ms = new MemoryStream();
                         croppedImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                         proizvod.SlikaThumb = ms.ToArray();
@@ -120,49 +121,59 @@ namespace eProdaja_UI.Products
         private void btnDodaj_Click(object sender, EventArgs e)
         {
 
-            if (proizvod == null)
-                proizvod = new Proizvodi();
-
-            if(comboVrsta.SelectedIndex!=0)
-            proizvod.KategorijaID = Convert.ToInt32(comboVrsta.SelectedValue);
-
-            proizvod.Sifra = txtSifra.Text;
-            proizvod.Naziv = txtNaziv.Text;
-            proizvod.Cijena = Convert.ToDecimal(txtCijena.Text);
-
-            if (comboJedinica.SelectedIndex != 0)
-                proizvod.JedinicaMjereID = Convert.ToInt32(comboJedinica.SelectedValue);
-            proizvod.Status = true;
-
-            HttpResponseMessage response;
-
-            if (proizvod.ProizvodID == 0)
-                response = proizvodiService.postResponse(proizvod);
-            else
-                response = proizvodiService.putResponse(proizvod.ProizvodID, proizvod);
-
-            if (response.IsSuccessStatusCode)
+            if (this.ValidateChildren())
             {
-                MessageBox.Show(Global.GetMessage("product_succ"), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (proizvod == null)
+                    proizvod = new Proizvodi();
+
+                if (comboVrsta.SelectedIndex != 0)
+                    proizvod.KategorijaID = Convert.ToInt32(comboVrsta.SelectedValue);
+              
+                proizvod.Sifra = txtSifra.Text;
+                proizvod.Naziv = txtNaziv.Text;
+                proizvod.Cijena = Convert.ToDecimal(txtCijena.Text);
+
+                if (comboJedinica.SelectedIndex != 0)
+              
+                    proizvod.JedinicaMjereID = Convert.ToInt32(comboJedinica.SelectedValue);
+               
+                proizvod.Status = true;
+
+                HttpResponseMessage response;
+
+                if (proizvod.ProizvodID == 0)
+                    response = proizvodiService.postResponse(proizvod);
+                else
+                    response = proizvodiService.putResponse(proizvod.ProizvodID, proizvod);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show(Global.GetMessage("product_succ"), "Info", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    Clear();
+                }
+                else
+                {
+                    MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+
+                BindGrid();
                 Clear();
-            }
-            else
-            {
-                MessageBox.Show(response.ReasonPhrase, Global.GetMessage("error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
-            BindGrid();
-            Clear();
+            }
 
         }
 
         private void BindGrid()
         {
-            HttpResponseMessage response = proizvodiService.getActionResponse("SearchProizvodiByVrsta", comboVrsta.SelectedValue.ToString());
+            HttpResponseMessage response = proizvodiService.getActionResponse("SearchProizvodiByVrsta",
+                comboVrsta.SelectedValue.ToString());
 
             if (response.IsSuccessStatusCode)
             {
-                dataGridView1.DataSource = response.Content.ReadAsAsync<List<esp_Proizvodi_SelectByVrsta_Result>>().Result;
+                dataGridView1.DataSource =
+                    response.Content.ReadAsAsync<List<esp_Proizvodi_SelectByVrsta_Result>>().Result;
                 //dataGridView1.Columns[0].Visible = false;
 
             }
@@ -197,13 +208,13 @@ namespace eProdaja_UI.Products
         private void comboVrsta_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindGrid();
-            if (proizvod != null)
-                Clear();
+            //if (proizvod != null)
+            //    Clear();
         }
 
-        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           
             string proizvodID = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
             HttpResponseMessage response = proizvodiService.getResponse(proizvodID);
@@ -213,5 +224,93 @@ namespace eProdaja_UI.Products
                 LoadData();
             }
         }
+
+        #region Validacija
+
+        private void comboVrsta_Validating(object sender, CancelEventArgs e)
+        {
+            if (comboVrsta.SelectedIndex == -1 || comboVrsta.SelectedIndex == 0)
+            {
+                e.Cancel = true;
+
+                errorProvider1.SetError(comboVrsta, "Odaberite kategoriju");
+            }
+            else
+            {
+                errorProvider1.SetError(comboVrsta, "");
+
+            }
+        }
+
+        private void txtSifra_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtSifra.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtSifra, Global.GetMessage("required"));
+            }
+            else
+            {
+                errorProvider1.SetError(txtSifra, "");
+            }
+        }
+
+        private void txtNaziv_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtNaziv.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtNaziv, Global.GetMessage("required"));
+            }
+            else
+            {
+                errorProvider1.SetError(txtNaziv, "");
+            }
+        }
+
+        private void txtCijena_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtCijena.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtCijena, Global.GetMessage("required"));
+            }
+            else
+            {
+                errorProvider1.SetError(txtCijena, "");
+            }
+        }
+
+        private void comboJedinica_Validating(object sender, CancelEventArgs e)
+        {
+            if (comboJedinica.SelectedIndex <=0)
+            {
+                e.Cancel = true;
+
+                errorProvider1.SetError(comboJedinica, "Odaberite jedinicu mjere");
+            }
+            else
+            {
+                errorProvider1.SetError(comboJedinica, "");
+
+            }
+        }
+     
+        #endregion
+
+        private void btnSlika_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtSlika.Text.Trim()))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(txtSlika, Global.GetMessage("picture_err"));
+            }
+            else
+            {
+                errorProvider1.SetError(txtSlika, "");
+            }
+        }
+
+   
     }
 }

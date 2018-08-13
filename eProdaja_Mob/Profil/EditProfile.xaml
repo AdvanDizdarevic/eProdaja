@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="eProdaja_Mob.Profil.EditProfile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:eProdaja_Mob.Profil"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel VerticalAlignment="Top" Margin="30">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0 0 0 30">
+                <TextBlock Text="eBookStore::Uredi Profil" FontSize="25" VerticalAlignment="Top" Foreground="White"/>
+            </StackPanel>
+
+            <Grid Grid.Row="1">
+                <Button Name="odustaniBtn" Content="Odustani" HorizontalAlignment="Left"  Click="OdustaniBtn_OnClick" Foreground="White" BorderBrush="White"></Button>
+                <Button Name="urediBtn" Content="Uredi " HorizontalAlignment="Right" Click="UrediBtn_OnClick" Foreground="White" BorderBrush="White"/>
+            </Grid>
+
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="Ime :" Foreground="White"></TextBlock>
+                <TextBox Name="imeInputtxt" Foreground="Black" BorderBrush="Black"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3">
+                <TextBlock Text="Prezime :" Foreground="White"></TextBlock>
+                <TextBox Name="prezimeInputtxt" Foreground="Black" BorderBrush="Black" />
+            </StackPanel>
+            <StackPanel Grid.Row="4">
+                <TextBlock Text="Email :" Foreground="White"></TextBlock>
+                <TextBox Name="emailInputtxt" Foreground="Black" BorderBrush="Black"/>
+            </StackPanel>
+            <StackPanel Grid.Row="5">
+                <TextBlock Text="Korisnicko Ime :" Foreground="White"></TextBlock>
+                <TextBox Name="korisnickoImeInputtxt" Foreground="Black" BorderBrush="Black"/>
+            </StackPanel>
+            <StackPanel Grid.Row="6">
+                <Button Name="promjeniPassBtn" Content="Promjeni Lozinku" HorizontalAlignment="Stretch" Click="PromjeniPassBtn_OnClick" Foreground="White" BorderBrush="White"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="7">
+                <Button Name="spasiPromjeneBtn" Content="Spasi Promjene" HorizontalAlignment="Stretch" Click="SpasiPromjeneBtn_OnClick" Foreground="White" BorderBrush="White" />
+            </StackPanel>
+
+        </Grid>
+    </StackPanel>
+</Page>

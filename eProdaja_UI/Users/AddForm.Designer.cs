@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.txtLozinkaH = new System.Windows.Forms.TextBox();
             this.txtKorisnickoIme = new System.Windows.Forms.TextBox();
-            this.txtTelefon = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPrezime = new System.Windows.Forms.TextBox();
             this.txtIme = new System.Windows.Forms.TextBox();
@@ -45,34 +44,29 @@
             this.btnDodajNovi = new System.Windows.Forms.Button();
             this.ulogeList = new System.Windows.Forms.CheckedListBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtTelefon = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // txtLozinkaH
             // 
-            this.txtLozinkaH.Location = new System.Drawing.Point(110, 194);
+            this.txtLozinkaH.Location = new System.Drawing.Point(116, 250);
             this.txtLozinkaH.Name = "txtLozinkaH";
             this.txtLozinkaH.Size = new System.Drawing.Size(165, 20);
             this.txtLozinkaH.TabIndex = 30;
+            this.txtLozinkaH.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // txtKorisnickoIme
             // 
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(110, 168);
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(116, 224);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(165, 20);
             this.txtKorisnickoIme.TabIndex = 29;
-            // 
-            // txtTelefon
-            // 
-            this.txtTelefon.Location = new System.Drawing.Point(107, 110);
-            this.txtTelefon.Name = "txtTelefon";
-            this.txtTelefon.Size = new System.Drawing.Size(168, 20);
-            this.txtTelefon.TabIndex = 28;
-            this.txtTelefon.Text = " ";
+            this.txtKorisnickoIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsername_Validating);
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(107, 83);
+            this.txtEmail.Location = new System.Drawing.Point(113, 139);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(168, 20);
             this.txtEmail.TabIndex = 27;
@@ -80,14 +74,15 @@
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(107, 55);
+            this.txtPrezime.Location = new System.Drawing.Point(113, 111);
             this.txtPrezime.Name = "txtPrezime";
             this.txtPrezime.Size = new System.Drawing.Size(168, 20);
             this.txtPrezime.TabIndex = 26;
+            this.txtPrezime.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrezime_Validating);
             // 
             // txtIme
             // 
-            this.txtIme.Location = new System.Drawing.Point(107, 27);
+            this.txtIme.Location = new System.Drawing.Point(113, 83);
             this.txtIme.Name = "txtIme";
             this.txtIme.Size = new System.Drawing.Size(168, 20);
             this.txtIme.TabIndex = 25;
@@ -96,7 +91,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(29, 225);
+            this.label8.Location = new System.Drawing.Point(35, 281);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 24;
@@ -105,7 +100,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(29, 201);
+            this.label6.Location = new System.Drawing.Point(35, 257);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 23;
@@ -114,7 +109,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(29, 173);
+            this.label5.Location = new System.Drawing.Point(35, 229);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 22;
@@ -123,7 +118,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 117);
+            this.label4.Location = new System.Drawing.Point(35, 173);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 21;
@@ -132,7 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(29, 90);
+            this.label3.Location = new System.Drawing.Point(35, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 20;
@@ -141,7 +136,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 62);
+            this.label2.Location = new System.Drawing.Point(35, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 19;
@@ -150,7 +145,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 34);
+            this.label1.Location = new System.Drawing.Point(35, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 18;
@@ -158,7 +153,7 @@
             // 
             // btnDodajNovi
             // 
-            this.btnDodajNovi.Location = new System.Drawing.Point(200, 358);
+            this.btnDodajNovi.Location = new System.Drawing.Point(206, 414);
             this.btnDodajNovi.Name = "btnDodajNovi";
             this.btnDodajNovi.Size = new System.Drawing.Size(75, 23);
             this.btnDodajNovi.TabIndex = 32;
@@ -169,7 +164,7 @@
             // ulogeList
             // 
             this.ulogeList.FormattingEnabled = true;
-            this.ulogeList.Location = new System.Drawing.Point(107, 225);
+            this.ulogeList.Location = new System.Drawing.Point(113, 281);
             this.ulogeList.Name = "ulogeList";
             this.ulogeList.Size = new System.Drawing.Size(168, 94);
             this.ulogeList.TabIndex = 33;
@@ -179,16 +174,25 @@
             this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider.ContainerControl = this;
             // 
+            // txtTelefon
+            // 
+            this.txtTelefon.Location = new System.Drawing.Point(110, 173);
+            this.txtTelefon.Mask = "(999) 000-000";
+            this.txtTelefon.Name = "txtTelefon";
+            this.txtTelefon.Size = new System.Drawing.Size(171, 20);
+            this.txtTelefon.TabIndex = 36;
+            this.txtTelefon.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefon_Validating);
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 408);
+            this.ClientSize = new System.Drawing.Size(333, 492);
+            this.Controls.Add(this.txtTelefon);
             this.Controls.Add(this.ulogeList);
             this.Controls.Add(this.btnDodajNovi);
             this.Controls.Add(this.txtLozinkaH);
             this.Controls.Add(this.txtKorisnickoIme);
-            this.Controls.Add(this.txtTelefon);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtPrezime);
             this.Controls.Add(this.txtIme);
@@ -200,7 +204,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddForm";
-            this.Text = "Novi korisnik";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.AddForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
@@ -211,7 +215,6 @@
         #endregion
         private System.Windows.Forms.TextBox txtLozinkaH;
         private System.Windows.Forms.TextBox txtKorisnickoIme;
-        private System.Windows.Forms.TextBox txtTelefon;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPrezime;
         private System.Windows.Forms.TextBox txtIme;
@@ -225,5 +228,6 @@
         private System.Windows.Forms.Button btnDodajNovi;
         private System.Windows.Forms.CheckedListBox ulogeList;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.MaskedTextBox txtTelefon;
     }
 }

@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="eProdaja_Mob.Registracija"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:eProdaja_Mob"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+        <TextBlock FontSize="25">eBookStore::Registracija</TextBlock>
+        <TextBox Name="inputIme" Header="Ime"></TextBox>
+        <TextBox Name="inputPrezime" Header="Prezime"></TextBox>
+        <TextBox Name="inputEMail" Header="E-mail"></TextBox>
+        <TextBox Name="inputKorisnickoIme" Header="Korisničko ime"></TextBox>
+        <PasswordBox     Name="inputPassword" Header="Password"></PasswordBox>
+        <Grid>
+        <Button Name="btnRegistracija" HorizontalAlignment="Right" Content="Registracija" Click="btnRegistracija_Click"></Button>
+            <Button Name="btnPrekid" HorizontalAlignment="Left" Content="Cancel" Click="btnPrekid_Click"></Button>
+        </Grid>
+    </StackPanel>
+         
+    
+</Page>

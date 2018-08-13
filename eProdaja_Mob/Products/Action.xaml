@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="eProdaja_Mob.Products.Action"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:eProdaja_Mob.Products"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <StackPanel>
+        <TextBlock Text="eBookStore::Proizvodi na akciji" FontSize="25" VerticalAlignment="Top" />
+        <ScrollViewer
+                    VerticalScrollBarVisibility="Visible"
+                    VerticalScrollMode="Auto">
+            <ListView x:Name="proizvodiList"
+    			IsItemClickEnabled="True"
+    			ItemClick="ProizvodiList_OnItemClick" Height="Auto" Width="400">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.Resources>
+                                <local:ImageConverter x:Key="ImageConverter"/>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Width="110" Height="110" Grid.Column="0" Margin="0 0 0 10">
+                                <Image Source="{Binding Converter={StaticResource ImageConverter}}"/>
+                            </Border>
+                            <StackPanel Grid.Column="1"  Margin="10, 0, 0, 10">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Naziv}" Style="{StaticResource MessageDialogTitleStyle}" Foreground="White"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Sifra :" Margin="0 0 10 0"  Foreground="White"/>
+                                        <TextBlock Text="{Binding Sifra}" Foreground="White"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Cijena :" Margin="0 0 10 0" Style="{StaticResource BaseTextBlockStyle}" Foreground="Gray"/>
+                                        <TextBlock Name="txtCijena"  Text="{Binding Cijena}" Style="{StaticResource BaseTextBlockStyle}" Foreground="Gray"/>
+                                        <TextBlock Text="KM" Margin="10 0 0 0" Style="{StaticResource BaseTextBlockStyle}" Foreground="Gray"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Sa popustom :" Margin="0 0 10 0" Style="{StaticResource BaseTextBlockStyle}" Foreground="Gray"/>
+                                        <TextBlock Text="{Binding SaPopustom}" Style="{StaticResource BaseTextBlockStyle}" Foreground="Gray"/>
+                                        <TextBlock Text="KM" Margin="10 0 0 0" Style="{StaticResource BaseTextBlockStyle}" Foreground="Gray"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Dana popusta :" Margin="0 0 10 0" Style="{StaticResource BaseTextBlockStyle}" Foreground="Gray"/>
+                                        <TextBlock Text="{Binding UkupnoDana}" Style="{StaticResource BaseTextBlockStyle}" Foreground="Gray"/>
+                                    </StackPanel>
+
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+    </StackPanel>
+</Page>
+

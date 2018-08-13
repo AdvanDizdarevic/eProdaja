@@ -574,6 +574,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="esp_AkcijskiProizvodi_SelectTrenutnoAktivni" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_Dobavljaci_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Naziv" Type="nvarchar" Mode="In" />
+          <Parameter Name="KontaktOsoba" Type="nvarchar" Mode="In" />
+          <Parameter Name="Adresa" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefon" Type="nvarchar" Mode="In" />
+          <Parameter Name="Fax" Type="nvarchar" Mode="In" />
+          <Parameter Name="Web" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="ZiroRacuni" Type="nvarchar" Mode="In" />
+          <Parameter Name="Napomena" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="esp_Dobavljaci_SelectByNaziv_KOsoba" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Naziv" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_IzlaziStavkeByIzlazID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IzlazID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Izlazi_InsertByNarudzbaID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NarudzbaID" Type="int" Mode="In" />
+          <Parameter Name="IznosSaPDV" Type="decimal" Mode="In" />
+          <Parameter Name="IznosBezPDV" Type="decimal" Mode="In" />
+          <Parameter Name="SkladisteID" Type="int" Mode="In" />
+          <Parameter Name="KorisnikID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_KategorijaProiz_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Naziv" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
         <Function Name="esp_KorisniciUloge_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="KorisnikID" Type="int" Mode="In" />
           <Parameter Name="UlogaID" Type="int" Mode="In" />
@@ -596,6 +626,45 @@
         <Function Name="esp_Korisnici_SelectBy_ImeP_KIme_Akt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ImePrezime" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="esp_Korisnici_SelectBy_ImeP_KIme_NeAkt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ImePrezime" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_Kupci_SelectByFUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ImePrezime" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_NarudzbaStavke_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NarudzbaID" Type="int" Mode="In" />
+          <Parameter Name="ProizvodID" Type="int" Mode="In" />
+          <Parameter Name="Kolicina" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_NarudzbaStavke_SelectByNarudzbaID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NarudzbaID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Narudzbe_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BrojNarudzbe" Type="nvarchar" Mode="In" />
+          <Parameter Name="KupacID" Type="int" Mode="In" />
+          <Parameter Name="Datum" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="esp_Narudzbe_SelectAktivne" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_Narudzbe_SelectByDatum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Datum" Type="nvarchar" Mode="In" />
+          <Parameter Name="KupacID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Narudzbe_SelectByKupac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KupacID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Narudzbe_SelectByKupacSum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KupacID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Narudzbe_SelectByNarudzbaId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NarudzbaId" Type="int" Mode="In" />
+          <Parameter Name="KupacID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Ocjene_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_Ocjene_SelectOcjenjeniProizvodiByKupadID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KupacID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_PrijedlogKupca_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="esp_Proizvodi_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Naziv" Type="nvarchar" Mode="In" />
           <Parameter Name="Sifra" Type="nvarchar" Mode="In" />
@@ -605,11 +674,60 @@
           <Parameter Name="Slika" Type="varbinary(max)" Mode="In" />
           <Parameter Name="SlikaThumb" Type="varbinary(max)" Mode="In" />
         </Function>
+        <Function Name="esp_Proizvodi_SelectAktivni" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_Proizvodi_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="esp_Proizvodi_SelectById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProizvodId" Type="int" Mode="In" />
         </Function>
+        <Function Name="esp_Proizvodi_SelectByNaziv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Naziv" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_Proizvodi_SelectBySifra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Sifra" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_Proizvodi_SelectBySifraList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Sifra" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_Proizvodi_SelectBySkladiste" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SkladisteID" Type="int" Mode="In" />
+        </Function>
         <Function Name="esp_Proizvodi_SelectByVrsta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="KategorijaID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Proizvodi_SelectNeAktivni" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="esp_SelectProizvod_BySkladisteStanje" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SkladisteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KupacID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Skladiste_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Naziv" Type="nvarchar" Mode="In" />
+          <Parameter Name="Adresa" Type="nvarchar" Mode="In" />
+          <Parameter Name="Opis" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="esp_Skladiste_SelectByNaziv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Naziv" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="esp_UlaziStavke_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UlazID" Type="int" Mode="In" />
+          <Parameter Name="ProizvodID" Type="int" Mode="In" />
+          <Parameter Name="Kolicina" Type="int" Mode="In" />
+          <Parameter Name="Cijena" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="esp_UlaziStavke_SelectByUlazID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UlazID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="esp_Ulazi_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BrojFakutre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Datum" Type="datetime" Mode="In" />
+          <Parameter Name="IznosRacuna" Type="decimal" Mode="In" />
+          <Parameter Name="PDV" Type="numeric" Mode="In" />
+          <Parameter Name="Napomena" Type="nvarchar" Mode="In" />
+          <Parameter Name="SkladisteID" Type="int" Mode="In" />
+          <Parameter Name="KorisnikID" Type="int" Mode="In" />
+          <Parameter Name="DobavljacID" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="marketNarudzbaModelStoreContainer">
           <EntitySet Name="AkcijskiProizvodi" EntityType="Self.AkcijskiProizvodi" Schema="dbo" store:Type="Tables" />
@@ -1533,7 +1651,125 @@
             <Parameter Name="SlikaThumb" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="esp_Proizvodi_SelectById" ReturnType="Collection(marketNarudzbaModel.esp_Proizvodi_SelectById_Result)">
-            <Parameter Name="ProizvodId" Mode="In" Type="Int32" />
+          <Parameter Name="ProizvodId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_NarudzbaStavke_SelectByNarudzbaID" ReturnType="Collection(marketNarudzbaModel.esp_NarudzbaStavke_SelectByNarudzbaID_Result)">
+          <Parameter Name="NarudzbaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Narudzbe_Insert" ReturnType="Collection(Decimal)">
+            <Parameter Name="BrojNarudzbe" Mode="In" Type="String" />
+            <Parameter Name="KupacID" Mode="In" Type="Int32" />
+            <Parameter Name="Datum" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Narudzbe_SelectAktivne" ReturnType="Collection(marketNarudzbaModel.esp_Narudzbe_Aktivne_result)" />
+          <FunctionImport Name="esp_NarudzbaStavke_Insert">
+            <Parameter Name="NarudzbaID" Mode="In" Type="Int32" />
+            <Parameter Name="ProizvodID" Mode="In" Type="Int32" />
+            <Parameter Name="Kolicina" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ProcesirajNarudzbu" ReturnType="Collection(marketNarudzbaModel.esp_Izlazi_InsertByNarudzbaID_Result)">
+            <Parameter Name="NarudzbaID" Mode="In" Type="Int32" />
+            <Parameter Name="IznosSaPDV" Mode="In" Type="Decimal" />
+            <Parameter Name="IznosBezPDV" Mode="In" Type="Decimal" />
+            <Parameter Name="SkladisteID" Mode="In" Type="Int32" />
+            <Parameter Name="KorisnikID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_AkcijskiProizvodi_SelectTrenutnoAktivni" ReturnType="Collection(marketNarudzbaModel.esp_AkcijskiProizvodi_SelectTrenutnoAktivni_Result)" />
+          <FunctionImport Name="esp_Dobavljaci_Insert">
+            <Parameter Name="Naziv" Mode="In" Type="String" />
+            <Parameter Name="KontaktOsoba" Mode="In" Type="String" />
+            <Parameter Name="Adresa" Mode="In" Type="String" />
+            <Parameter Name="Telefon" Mode="In" Type="String" />
+            <Parameter Name="Fax" Mode="In" Type="String" />
+            <Parameter Name="Web" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="ZiroRacuni" Mode="In" Type="String" />
+            <Parameter Name="Napomena" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Dobavljaci_SelectByNaziv_KOsoba" ReturnType="Collection(marketNarudzbaModel.esp_Dobavljaci_SelectByNaziv_KOsoba_Result)">
+          <Parameter Name="Naziv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_IzlaziStavkeByIzlazID" ReturnType="Collection(marketNarudzbaModel.esp_IzlaziStavkeByIzlazID_Result)">
+          <Parameter Name="IzlazID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_KategorijaProiz_Insert">
+            <Parameter Name="Naziv" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Korisnici_SelectBy_ImeP_KIme_NeAkt" ReturnType="Collection(marketNarudzbaModel.esp_Korisnici_SelectBy_ImeP_KIme_NeAkt_Result)">
+          <Parameter Name="ImePrezime" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Kupci_SelectByFUsername" ReturnType="Collection(marketNarudzbaModel.esp_Kupci_SelectByFUsername_Result)">
+          <Parameter Name="ImePrezime" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Narudzbe_SelectByDatum" ReturnType="Collection(marketNarudzbaModel.esp_Narudzbe_SelectByDatum_Result)">
+            <Parameter Name="Datum" Mode="In" Type="String" />
+            <Parameter Name="KupacID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Narudzbe_SelectByKupac" ReturnType="Collection(marketNarudzbaModel.esp_Narudzbe_SelectByKupac_Result)">
+          <Parameter Name="KupacID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Narudzbe_SelectByKupacSum" ReturnType="Collection(marketNarudzbaModel.esp_Narudzbe_SelectByKupacSum_Result)">
+          <Parameter Name="KupacID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Narudzbe_SelectByNarudzbaId" ReturnType="Collection(marketNarudzbaModel.esp_Narudzbe_SelectByNarudzbaId_Result)">
+            <Parameter Name="NarudzbaId" Mode="In" Type="Int32" />
+            <Parameter Name="KupacID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Ocjene_SelectAll" ReturnType="Collection(marketNarudzbaModel.esp_Ocjene_SelectAll_Result)" />
+          <FunctionImport Name="esp_Ocjene_SelectOcjenjeniProizvodiByKupadID" ReturnType="Collection(marketNarudzbaModel.esp_Ocjene_SelectOcjenjeniProizvodiByKupadID_Result)">
+          <Parameter Name="KupacID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_PrijedlogKupca_SelectAll" ReturnType="Collection(marketNarudzbaModel.esp_PrijedlogKupca_SelectAll_Result)" />
+          <FunctionImport Name="esp_Proizvodi_SelectAktivni" ReturnType="Collection(marketNarudzbaModel.esp_Proizvodi_SelectAktivni_Result)" />
+          <FunctionImport Name="esp_Proizvodi_SelectAll" ReturnType="Collection(marketNarudzbaModel.esp_Proizvodi_SelectAll_Result)" />
+          <FunctionImport Name="esp_Proizvodi_SelectByNaziv" ReturnType="Collection(marketNarudzbaModel.esp_Proizvodi_SelectByNaziv_Result)">
+          <Parameter Name="Naziv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Proizvodi_SelectBySifra" ReturnType="Collection(marketNarudzbaModel.esp_Proizvodi_SelectBySifra_Result)">
+          <Parameter Name="Sifra" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Proizvodi_SelectBySkladiste" ReturnType="Collection(marketNarudzbaModel.esp_Proizvodi_SelectBySkladiste_Result)">
+          <Parameter Name="SkladisteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Proizvodi_SelectNeAktivni" ReturnType="Collection(marketNarudzbaModel.esp_Proizvodi_SelectNeAktivni_Result)" />
+          <FunctionImport Name="esp_SelectProizvod_BySkladisteStanje" ReturnType="Collection(marketNarudzbaModel.esp_SelectProizvod_BySkladisteStanje_Result)">
+          <Parameter Name="SkladisteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID" ReturnType="Collection(marketNarudzbaModel.esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID_Result)">
+          <Parameter Name="KupacID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Skladiste_Insert">
+            <Parameter Name="Naziv" Mode="In" Type="String" />
+            <Parameter Name="Adresa" Mode="In" Type="String" />
+            <Parameter Name="Opis" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Skladiste_SelectByNaziv" ReturnType="Collection(marketNarudzbaModel.esp_Skladiste_SelectByNaziv_Result)">
+          <Parameter Name="Naziv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="esp_UlaziStavke_Insert">
+            <Parameter Name="UlazID" Mode="In" Type="Int32" />
+            <Parameter Name="ProizvodID" Mode="In" Type="Int32" />
+            <Parameter Name="Kolicina" Mode="In" Type="Int32" />
+            <Parameter Name="Cijena" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="esp_UlaziStavke_SelectByUlazID" ReturnType="Collection(marketNarudzbaModel.esp_UlaziStavke_SelectByUlazID_Result)">
+          <Parameter Name="UlazID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Ulazi_Insert" ReturnType="Collection(Decimal)">
+            <Parameter Name="BrojFakutre" Mode="In" Type="String" />
+            <Parameter Name="Datum" Mode="In" Type="DateTime" />
+            <Parameter Name="IznosRacuna" Mode="In" Type="Decimal" />
+            <Parameter Name="PDV" Mode="In" Type="Decimal" />
+            <Parameter Name="Napomena" Mode="In" Type="String" />
+            <Parameter Name="SkladisteID" Mode="In" Type="Int32" />
+            <Parameter Name="KorisnikID" Mode="In" Type="Int32" />
+            <Parameter Name="DobavljacID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="esp_Proizvodi_SelectBySifraList" ReturnType="Collection(marketNarudzbaModel.esp_Proizvodi_SelectBySifraList_Result)">
+          <Parameter Name="Sifra" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="esp_Korisnici_SelectBy_ImeP_KIme_Akt_Result">
@@ -1569,6 +1805,256 @@
           <Property Type="Boolean" Name="Status" Nullable="false" />
           <Property Type="String" Name="Kategorija" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="ProsjecnaOcjena" Nullable="true" Precision="38" Scale="6" />
+        </ComplexType>
+        <ComplexType Name="esp_NarudzbaStavke_SelectByNarudzbaID_Result">
+          <Property Type="Int32" Name="NarudzbaStavkaID" Nullable="false" />
+          <Property Type="String" Name="BrojNarudzbe" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Proizvod" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="Iznos" Nullable="true" Precision="16" Scale="2" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="String" Name="Kategorija" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Prosjecna_Ocjena" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="Kolicina" Nullable="false" />
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_Narudzbe_SelectAktivne_Result">
+          <Property Type="Int32" Name="NarudzbaID" Nullable="false" />
+          <Property Type="String" Name="BrojNarudzbe" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="KupacID" Nullable="false" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Kupac" Nullable="false" MaxLength="101" />
+          <Property Type="Decimal" Name="Iznos" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="esp_Narudzbe_Aktivne_result">
+          <Property Type="Int32" Name="NarudzbaID" Nullable="false" />
+          <Property Type="String" Name="BrojNarudzbe" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="KupacID" Nullable="false" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Kupac" Nullable="false" MaxLength="101" />
+          <Property Type="Decimal" Name="Iznos" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="esp_Izlazi_InsertByNarudzbaID_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="Int32" Name="Kolicina" Nullable="false" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="IzlazID" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Int32" Name="Datum" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_AkcijskiProizvodi_SelectTrenutnoAktivni_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="Int32" Name="AkcijskiProizvodID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="Popust" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="SaPopustom" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="DatumPocetka" Nullable="false" />
+          <Property Type="DateTime" Name="DatumKraja" Nullable="false" />
+          <Property Type="Int32" Name="UkupnoDana" Nullable="true" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="esp_Dobavljaci_SelectByNaziv_KOsoba_Result">
+          <Property Type="Int32" Name="DobavljacID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="KontaktOsoba" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Adresa" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Telefon" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Web" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="ZiroRacuni" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_IzlaziStavkeByIzlazID_Result">
+          <Property Type="String" Name="BrojRacuna" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="Kolicina" Nullable="false" />
+          <Property Type="Decimal" Name="IznosSaPDV" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="IznosBezPDV" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="esp_Korisnici_SelectBy_ImeP_KIme_NeAkt_Result">
+          <Property Type="Int32" Name="KorisnikID" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Telefon" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LozinkaHash" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LozinkaSalt" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+          <Property Type="String" Name="Naziv_uloge" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="esp_Kupci_SelectByFUsername_Result">
+          <Property Type="Int32" Name="KupacID" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DatumRegistracije" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="KorisnickoIme" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LozinkaHash" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LozinkaSalt" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_Narudzbe_SelectByDatum_Result">
+          <Property Type="Int32" Name="NarudzbaID" Nullable="false" />
+          <Property Type="String" Name="BrojNarudzbe" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="Kolicina" Nullable="true" />
+          <Property Type="String" Name="Kategorija" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="esp_Narudzbe_SelectByKupac_Result">
+          <Property Type="Int32" Name="NarudzbaID" Nullable="false" />
+          <Property Type="String" Name="BrojNarudzbe" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Kolicina" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="esp_Narudzbe_SelectByKupacSum_Result">
+          <Property Type="Int32" Name="NarudzbaID" Nullable="false" />
+          <Property Type="Decimal" Name="Ukupno" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="Kolicina" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="esp_Narudzbe_SelectByNarudzbaId_Result">
+          <Property Type="Int32" Name="NarudzbaID" Nullable="false" />
+          <Property Type="String" Name="BrojNarudzbe" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="Kolicina" Nullable="true" />
+          <Property Type="String" Name="Kategorija" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="esp_Ocjene_SelectAll_Result">
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Ocjena" Nullable="false" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="esp_Ocjene_SelectOcjenjeniProizvodiByKupadID_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="true" />
+          <Property Type="Int32" Name="KupacID" Nullable="false" />
+          <Property Type="Int32" Name="Ocjena" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_PrijedlogKupca_SelectAll_Result">
+          <Property Type="Int32" Name="PrijedlogKupcaID" Nullable="false" />
+          <Property Type="String" Name="Ime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Prezime" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sadrzaj" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="esp_Proizvodi_SelectAktivni_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="JedMjere" Nullable="false" MaxLength="10" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_Proizvodi_SelectAll_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="JedMjere" Nullable="false" MaxLength="10" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_Proizvodi_SelectByNaziv_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="JedMjere" Nullable="false" MaxLength="10" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_Proizvodi_SelectBySifra_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="JedMjere" Nullable="false" MaxLength="10" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_Proizvodi_SelectBySkladiste_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="Int32" Name="Kolicina" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="esp_Proizvodi_SelectNeAktivni_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="JedMjere" Nullable="false" MaxLength="10" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_SelectProizvod_BySkladisteStanje_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="Kolicina" Nullable="false" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Kategorija" Nullable="false" MaxLength="50" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="esp_Skladiste_SelectByNaziv_Result">
+          <Property Type="Int32" Name="SkladisteID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Adresa" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="Opis" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="esp_UlaziStavke_SelectByUlazID_Result">
+          <Property Type="Int32" Name="UlazID" Nullable="false" />
+          <Property Type="String" Name="BrojFakture" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Kolicina" Nullable="false" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Ukupno" Nullable="true" Precision="29" Scale="2" />
+          <Property Type="Decimal" Name="PDV" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="IznosRacuna" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="Datum" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Napomena" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="esp_Proizvodi_SelectBySifraList_Result">
+          <Property Type="Int32" Name="ProizvodID" Nullable="false" />
+          <Property Type="String" Name="Naziv" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Sifra" Nullable="false" MaxLength="20" />
+          <Property Type="Decimal" Name="Cijena" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="JedMjere" Nullable="false" MaxLength="10" />
+          <Property Type="Binary" Name="SlikaThumb" Nullable="true" />
+          <Property Type="Boolean" Name="Status" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1876,6 +2362,359 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
                 <ScalarProperty Name="ProsjecnaOcjena" ColumnName="ProsjecnaOcjena" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_NarudzbaStavke_SelectByNarudzbaID" FunctionName="marketNarudzbaModel.Store.esp_NarudzbaStavke_SelectByNarudzbaID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_NarudzbaStavke_SelectByNarudzbaID_Result">
+                <ScalarProperty Name="NarudzbaStavkaID" ColumnName="NarudzbaStavkaID" />
+                <ScalarProperty Name="BrojNarudzbe" ColumnName="BrojNarudzbe" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Proizvod" ColumnName="Proizvod" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Iznos" ColumnName="Iznos" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+                <ScalarProperty Name="Prosjecna_Ocjena" ColumnName="Prosjecna Ocjena" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Narudzbe_Insert" FunctionName="marketNarudzbaModel.Store.esp_Narudzbe_Insert" />
+          <FunctionImportMapping FunctionImportName="esp_Narudzbe_SelectAktivne" FunctionName="marketNarudzbaModel.Store.esp_Narudzbe_SelectAktivne">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Narudzbe_Aktivne_result">
+                <ScalarProperty Name="NarudzbaID" ColumnName="NarudzbaID" />
+                <ScalarProperty Name="BrojNarudzbe" ColumnName="BrojNarudzbe" />
+                <ScalarProperty Name="KupacID" ColumnName="KupacID" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Kupac" ColumnName="Kupac" />
+                <ScalarProperty Name="Iznos" ColumnName="Iznos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_NarudzbaStavke_Insert" FunctionName="marketNarudzbaModel.Store.esp_NarudzbaStavke_Insert" />
+          <FunctionImportMapping FunctionImportName="ProcesirajNarudzbu" FunctionName="marketNarudzbaModel.Store.esp_Izlazi_InsertByNarudzbaID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Izlazi_InsertByNarudzbaID_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="IzlazID" ColumnName="IzlazID" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_AkcijskiProizvodi_SelectTrenutnoAktivni" FunctionName="marketNarudzbaModel.Store.esp_AkcijskiProizvodi_SelectTrenutnoAktivni">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_AkcijskiProizvodi_SelectTrenutnoAktivni_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="AkcijskiProizvodID" ColumnName="AkcijskiProizvodID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Popust" ColumnName="Popust" />
+                <ScalarProperty Name="SaPopustom" ColumnName="SaPopustom" />
+                <ScalarProperty Name="DatumPocetka" ColumnName="DatumPocetka" />
+                <ScalarProperty Name="DatumKraja" ColumnName="DatumKraja" />
+                <ScalarProperty Name="UkupnoDana" ColumnName="UkupnoDana" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Dobavljaci_Insert" FunctionName="marketNarudzbaModel.Store.esp_Dobavljaci_Insert" />
+          <FunctionImportMapping FunctionImportName="esp_Dobavljaci_SelectByNaziv_KOsoba" FunctionName="marketNarudzbaModel.Store.esp_Dobavljaci_SelectByNaziv_KOsoba">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Dobavljaci_SelectByNaziv_KOsoba_Result">
+                <ScalarProperty Name="DobavljacID" ColumnName="DobavljacID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="KontaktOsoba" ColumnName="KontaktOsoba" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ZiroRacuni" ColumnName="ZiroRacuni" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_IzlaziStavkeByIzlazID" FunctionName="marketNarudzbaModel.Store.esp_IzlaziStavkeByIzlazID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_IzlaziStavkeByIzlazID_Result">
+                <ScalarProperty Name="BrojRacuna" ColumnName="BrojRacuna" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="IznosSaPDV" ColumnName="IznosSaPDV" />
+                <ScalarProperty Name="IznosBezPDV" ColumnName="IznosBezPDV" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_KategorijaProiz_Insert" FunctionName="marketNarudzbaModel.Store.esp_KategorijaProiz_Insert" />
+          <FunctionImportMapping FunctionImportName="esp_Korisnici_SelectBy_ImeP_KIme_NeAkt" FunctionName="marketNarudzbaModel.Store.esp_Korisnici_SelectBy_ImeP_KIme_NeAkt">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Korisnici_SelectBy_ImeP_KIme_NeAkt_Result">
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Naziv_uloge" ColumnName="Naziv uloge" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Kupci_SelectByFUsername" FunctionName="marketNarudzbaModel.Store.esp_Kupci_SelectByFUsername">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Kupci_SelectByFUsername_Result">
+                <ScalarProperty Name="KupacID" ColumnName="KupacID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="DatumRegistracije" ColumnName="DatumRegistracije" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="LozinkaHash" ColumnName="LozinkaHash" />
+                <ScalarProperty Name="LozinkaSalt" ColumnName="LozinkaSalt" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Narudzbe_SelectByDatum" FunctionName="marketNarudzbaModel.Store.esp_Narudzbe_SelectByDatum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Narudzbe_SelectByDatum_Result">
+                <ScalarProperty Name="NarudzbaID" ColumnName="NarudzbaID" />
+                <ScalarProperty Name="BrojNarudzbe" ColumnName="BrojNarudzbe" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Narudzbe_SelectByKupac" FunctionName="marketNarudzbaModel.Store.esp_Narudzbe_SelectByKupac">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Narudzbe_SelectByKupac_Result">
+                <ScalarProperty Name="NarudzbaID" ColumnName="NarudzbaID" />
+                <ScalarProperty Name="BrojNarudzbe" ColumnName="BrojNarudzbe" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Narudzbe_SelectByKupacSum" FunctionName="marketNarudzbaModel.Store.esp_Narudzbe_SelectByKupacSum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Narudzbe_SelectByKupacSum_Result">
+                <ScalarProperty Name="NarudzbaID" ColumnName="NarudzbaID" />
+                <ScalarProperty Name="Ukupno" ColumnName="Ukupno" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Narudzbe_SelectByNarudzbaId" FunctionName="marketNarudzbaModel.Store.esp_Narudzbe_SelectByNarudzbaId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Narudzbe_SelectByNarudzbaId_Result">
+                <ScalarProperty Name="NarudzbaID" ColumnName="NarudzbaID" />
+                <ScalarProperty Name="BrojNarudzbe" ColumnName="BrojNarudzbe" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Ocjene_SelectAll" FunctionName="marketNarudzbaModel.Store.esp_Ocjene_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Ocjene_SelectAll_Result">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Ocjene_SelectOcjenjeniProizvodiByKupadID" FunctionName="marketNarudzbaModel.Store.esp_Ocjene_SelectOcjenjeniProizvodiByKupadID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Ocjene_SelectOcjenjeniProizvodiByKupadID_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="KupacID" ColumnName="KupacID" />
+                <ScalarProperty Name="Ocjena" ColumnName="Ocjena" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_PrijedlogKupca_SelectAll" FunctionName="marketNarudzbaModel.Store.esp_PrijedlogKupca_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_PrijedlogKupca_SelectAll_Result">
+                <ScalarProperty Name="PrijedlogKupcaID" ColumnName="PrijedlogKupcaID" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sadrzaj" ColumnName="Sadrzaj" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Proizvodi_SelectAktivni" FunctionName="marketNarudzbaModel.Store.esp_Proizvodi_SelectAktivni">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Proizvodi_SelectAktivni_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="JedMjere" ColumnName="JedMjere" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Proizvodi_SelectAll" FunctionName="marketNarudzbaModel.Store.esp_Proizvodi_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Proizvodi_SelectAll_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="JedMjere" ColumnName="JedMjere" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Proizvodi_SelectByNaziv" FunctionName="marketNarudzbaModel.Store.esp_Proizvodi_SelectByNaziv">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Proizvodi_SelectByNaziv_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="JedMjere" ColumnName="JedMjere" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Proizvodi_SelectBySifra" FunctionName="marketNarudzbaModel.Store.esp_Proizvodi_SelectBySifra">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Proizvodi_SelectBySifra_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="JedMjere" ColumnName="JedMjere" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Proizvodi_SelectBySkladiste" FunctionName="marketNarudzbaModel.Store.esp_Proizvodi_SelectBySkladiste">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Proizvodi_SelectBySkladiste_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Proizvodi_SelectNeAktivni" FunctionName="marketNarudzbaModel.Store.esp_Proizvodi_SelectNeAktivni">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Proizvodi_SelectNeAktivni_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="JedMjere" ColumnName="JedMjere" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_SelectProizvod_BySkladisteStanje" FunctionName="marketNarudzbaModel.Store.esp_SelectProizvod_BySkladisteStanje">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_SelectProizvod_BySkladisteStanje_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID" FunctionName="marketNarudzbaModel.Store.esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Kategorija" ColumnName="Kategorija" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Skladiste_Insert" FunctionName="marketNarudzbaModel.Store.esp_Skladiste_Insert" />
+          <FunctionImportMapping FunctionImportName="esp_Skladiste_SelectByNaziv" FunctionName="marketNarudzbaModel.Store.esp_Skladiste_SelectByNaziv">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Skladiste_SelectByNaziv_Result">
+                <ScalarProperty Name="SkladisteID" ColumnName="SkladisteID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_UlaziStavke_Insert" FunctionName="marketNarudzbaModel.Store.esp_UlaziStavke_Insert" />
+          <FunctionImportMapping FunctionImportName="esp_UlaziStavke_SelectByUlazID" FunctionName="marketNarudzbaModel.Store.esp_UlaziStavke_SelectByUlazID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_UlaziStavke_SelectByUlazID_Result">
+                <ScalarProperty Name="UlazID" ColumnName="UlazID" />
+                <ScalarProperty Name="BrojFakture" ColumnName="BrojFakture" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="Ukupno" ColumnName="Ukupno" />
+                <ScalarProperty Name="PDV" ColumnName="PDV" />
+                <ScalarProperty Name="IznosRacuna" ColumnName="IznosRacuna" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="esp_Ulazi_Insert" FunctionName="marketNarudzbaModel.Store.esp_Ulazi_Insert" />
+          <FunctionImportMapping FunctionImportName="esp_Proizvodi_SelectBySifraList" FunctionName="marketNarudzbaModel.Store.esp_Proizvodi_SelectBySifraList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="marketNarudzbaModel.esp_Proizvodi_SelectBySifraList_Result">
+                <ScalarProperty Name="ProizvodID" ColumnName="ProizvodID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="JedMjere" ColumnName="JedMjere" />
+                <ScalarProperty Name="SlikaThumb" ColumnName="SlikaThumb" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

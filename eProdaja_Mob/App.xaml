@@ -1,0 +1,15 @@
+﻿<Application
+    x:Class="eProdaja_Mob.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:eProdaja_Mob">
+    <Application.Resources>
+        <Style x:Key="LayoutGridStyle" TargetType="Grid">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/Assets/image.jpg"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

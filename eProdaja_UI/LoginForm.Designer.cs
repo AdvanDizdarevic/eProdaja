@@ -38,7 +38,7 @@
             // 
             // txtLozinkaH
             // 
-            this.txtLozinkaH.Location = new System.Drawing.Point(102, 44);
+            this.txtLozinkaH.Location = new System.Drawing.Point(42, 149);
             this.txtLozinkaH.Name = "txtLozinkaH";
             this.txtLozinkaH.PasswordChar = '*';
             this.txtLozinkaH.Size = new System.Drawing.Size(190, 20);
@@ -46,7 +46,7 @@
             // 
             // txtKorisnickoIme
             // 
-            this.txtKorisnickoIme.Location = new System.Drawing.Point(102, 18);
+            this.txtKorisnickoIme.Location = new System.Drawing.Point(42, 100);
             this.txtKorisnickoIme.Name = "txtKorisnickoIme";
             this.txtKorisnickoIme.Size = new System.Drawing.Size(190, 20);
             this.txtKorisnickoIme.TabIndex = 18;
@@ -54,7 +54,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 51);
+            this.label6.Location = new System.Drawing.Point(39, 133);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 17;
@@ -63,7 +63,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 23);
+            this.label5.Location = new System.Drawing.Point(39, 84);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 16;
@@ -71,7 +71,7 @@
             // 
             // odustaniBtn
             // 
-            this.odustaniBtn.Location = new System.Drawing.Point(102, 79);
+            this.odustaniBtn.Location = new System.Drawing.Point(39, 200);
             this.odustaniBtn.Name = "odustaniBtn";
             this.odustaniBtn.Size = new System.Drawing.Size(75, 23);
             this.odustaniBtn.TabIndex = 20;
@@ -81,7 +81,7 @@
             // 
             // prijavaBtn
             // 
-            this.prijavaBtn.Location = new System.Drawing.Point(217, 79);
+            this.prijavaBtn.Location = new System.Drawing.Point(160, 200);
             this.prijavaBtn.Name = "prijavaBtn";
             this.prijavaBtn.Size = new System.Drawing.Size(75, 23);
             this.prijavaBtn.TabIndex = 21;
@@ -91,9 +91,11 @@
             // 
             // LoginForm
             // 
+            this.ApplyImageInvert = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 132);
+            this.BackImage = global::eProdaja_UI.Properties.Resources.login;
+            this.ClientSize = new System.Drawing.Size(276, 274);
             this.Controls.Add(this.prijavaBtn);
             this.Controls.Add(this.odustaniBtn);
             this.Controls.Add(this.txtLozinkaH);
@@ -107,6 +109,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Prijava na sistem";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

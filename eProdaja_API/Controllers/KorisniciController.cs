@@ -26,11 +26,19 @@ namespace eProdaja_API.Controllers
 
 
         [HttpGet]
-        [Route("api/Korisnici/SearchKorisnici/{name?}")]
+        [Route("api/Korisnici/SearchKorisnici/{name?}")]    
         public List<Korisnici> SearchKorisnici(string name="")
         {
             return db.esp_Korisnici_SelectByImePrezime(name).ToList();
         }
+
+        [HttpGet]
+        [Route("api/Korisnici/GetKorisniciStatus/{typeId}")]
+        public bool GetKorisniciStatus(int typeId)
+        {
+            return db.Korisnicis.Find(typeId).Status;
+        }
+
 
         // GET: api/Korisnici/5
         [ResponseType(typeof(Korisnici))]
@@ -46,8 +54,8 @@ namespace eProdaja_API.Controllers
         }
 
         [ResponseType(typeof(Korisnici))]
-        [Route("api/Korisnici/{username}")]
-        public IHttpActionResult GetKorisnici(string username)
+        [Route("api/Korisnici/GetKorisniciByUsername/{username}")]
+        public IHttpActionResult GetKorisniciByUsername(string username)
         {
             Korisnici korisnik = db.Korisnicis.Where(x => x.KorisnickoIme == username).FirstOrDefault();
             if (korisnik == null)
@@ -57,6 +65,24 @@ namespace eProdaja_API.Controllers
 
             return Ok(korisnik);
         }
+
+        [HttpGet]
+        [Route("api/Korisnici/GetNeaktivni/")]
+        public List<Korisnici> GetNeaktivni()
+        {
+            return db.Korisnicis.Where(x => x.Status == false).ToList();
+            
+        }
+
+        [HttpGet]
+        [Route("api/Korisnici/GetAktivni/")]
+        public List<Korisnici> GetAktivni()
+        {
+            return db.Korisnicis.Where(x => x.Status == true).ToList();
+
+        }
+
+
 
         // PUT: api/Korisnici/5
         [ResponseType(typeof(void))]
@@ -114,7 +140,7 @@ namespace eProdaja_API.Controllers
             catch (EntityException ex)
             {
                 throw new NotImplementedException();
-              //  throw CreateHttpResponseExcetion(Util.ExceptionHandler.HandleException(ex), HttpStatusCode.Conflict);
+             throw CreateHttpResponseExcetion(Util.ExceptionHandler.HandleException(ex), HttpStatusCode.Conflict);
             }
             foreach(Uloge u in korisnici.Uloge)
             {
@@ -148,7 +174,8 @@ namespace eProdaja_API.Controllers
                 return NotFound();
             }
 
-            db.Korisnicis.Remove(korisnici);
+            //db.Korisnicis.Remove(korisnici);
+            korisnici.Status = false;
             db.SaveChanges();
 
             return Ok(korisnici);

@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="api_error" xml:space="preserve">
+    <value>Greska u komunikaciji sa apijem</value>
+  </data>
+  <data name="cat_name_req" xml:space="preserve">
+    <value>Obavezan unos naziva</value>
+  </data>
+  <data name="cat_succ" xml:space="preserve">
+    <value>Kategorija uspjesno dodata,da li zelite dodati novu?</value>
+  </data>
+  <data name="datum_err" xml:space="preserve">
+    <value>Datum mora biti veci ili jednak danasnjem !!</value>
+  </data>
+  <data name="del_succ" xml:space="preserve">
+    <value>Uspjesno obrisano!</value>
+  </data>
   <data name="email_err" xml:space="preserve">
     <value>Neispravan format maila</value>
   </data>
@@ -126,13 +141,55 @@
   <data name="fname_req" xml:space="preserve">
     <value>Obavezno unesite ime</value>
   </data>
+  <data name="img_size_err" xml:space="preserve">
+    <value>Ne odgovara velicina slike</value>
+  </data>
+  <data name="info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="item_del_succ" xml:space="preserve">
+    <value>Uspjesno ste obrisali</value>
+  </data>
+  <data name="item_exist" xml:space="preserve">
+    <value>Item koji dodajete vec postoji!!</value>
+  </data>
+  <data name="item_sel_err" xml:space="preserve">
+    <value>Niste odabrani item</value>
+  </data>
+  <data name="list_error" xml:space="preserve">
+    <value>Nista dodali ni jedan proizvod!!</value>
+  </data>
   <data name="login_pass_err" xml:space="preserve">
     <value>Unesena lozinka nije validna</value>
+  </data>
+  <data name="order_succ" xml:space="preserve">
+    <value>Uspjesna nabavka</value>
+  </data>
+  <data name="picture_err" xml:space="preserve">
+    <value>Obavezno dodavanje slike !! </value>
+  </data>
+  <data name="popust_err" xml:space="preserve">
+    <value>Obavezno dodavanje popusta!!</value>
   </data>
   <data name="product_succ" xml:space="preserve">
     <value>Uspjesno ste sačuvali podatke</value>
   </data>
+  <data name="required" xml:space="preserve">
+    <value>Obavezno unijeti</value>
+  </data>
+  <data name="skladiste_del_succ" xml:space="preserve">
+    <value>Uspjesno izbrisano skladiste !!</value>
+  </data>
+  <data name="skladiste_err" xml:space="preserve">
+    <value>Skladiste error</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>Uspjesno obavljeno</value>
+  </data>
+  <data name="sup_succ_info" xml:space="preserve">
+    <value>Dobvljac uspjesno dodan, da li želite dodati jos jednog?</value>
+  </data>
   <data name="warning" xml:space="preserve">
-    <value>Upozorenje</value>
+    <value>Error</value>
   </data>
 </root>

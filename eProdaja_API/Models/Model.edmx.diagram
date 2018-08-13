@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="marketNarudzbaModel.Korisnici" Width="1.5" PointX="3.75" PointY="20.875" IsExpanded="true" />
         <EntityTypeShape EntityType="marketNarudzbaModel.KorisniciUloge" Width="1.5" PointX="9" PointY="18.875" IsExpanded="true" />
         <EntityTypeShape EntityType="marketNarudzbaModel.Kupci" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="marketNarudzbaModel.NarudzbaStavke" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="marketNarudzbaModel.NarudzbaStavke" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="marketNarudzbaModel.Narudzbe" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="marketNarudzbaModel.Novosti" Width="1.5" PointX="6" PointY="26.25" IsExpanded="true" />
         <EntityTypeShape EntityType="marketNarudzbaModel.Ocjene" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />

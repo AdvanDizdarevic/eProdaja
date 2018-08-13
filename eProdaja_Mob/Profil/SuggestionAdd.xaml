@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="eProdaja_Mob.Profil.SuggestionAdd"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:eProdaja_Mob.Profil"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel VerticalAlignment="Top" Margin="30">
+        <TextBlock Text="eBookStore::Prijedlog" FontSize="25" VerticalAlignment="Top"  />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Margin="0 0 0 20">
+                <TextBlock Text="Dodavanje prijedloga" FontSize="25" VerticalAlignment="Top" Foreground="w" Margin="0 0 0 40"/>
+                <TextBlock Text="Naziv prijedloga:" Foreground="White"></TextBlock>
+                <TextBox Name="nazivInputtxt" Foreground="Black" BorderBrush="Black"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Unesite sadržaj : " Foreground="White"></TextBlock>
+                <TextBox Name="sadrzajInputtxt" Height="200" Foreground="Black" BorderBrush="Black">
+
+                </TextBox>
+
+            </StackPanel>
+
+            <Grid Grid.Row="2">
+                <Button Name="odustaniBtn" Content="Odustani" HorizontalAlignment="Left"  Click="OdustaniBtn_OnClick" Foreground="White" BorderBrush="White"></Button>
+                <Button Name="prijaviBtn" Content="Prijavi prijedlog" HorizontalAlignment="Right" Click="PrijaviBtn_OnClick" Foreground="White" BorderBrush="White"/>
+            </Grid>
+
+        </Grid>
+    </StackPanel>
+</Page>
