@@ -1,0 +1,1460 @@
+USE [master]
+GO
+/****** Object:  Database [marketNarudzba]    Script Date: 9/23/2018 12:47:00 PM ******/
+CREATE DATABASE [marketNarudzba]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'marketNarudzba', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\marketNarudzba.mdf' , SIZE = 8256KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'marketNarudzba_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\marketNarudzba_log.ldf' , SIZE = 11456KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [marketNarudzba] SET COMPATIBILITY_LEVEL = 110
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [marketNarudzba].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [marketNarudzba] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [marketNarudzba] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [marketNarudzba] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [marketNarudzba] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [marketNarudzba] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET RECOVERY FULL 
+GO
+ALTER DATABASE [marketNarudzba] SET  MULTI_USER 
+GO
+ALTER DATABASE [marketNarudzba] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [marketNarudzba] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [marketNarudzba] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [marketNarudzba] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [marketNarudzba] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'marketNarudzba', N'ON'
+GO
+USE [marketNarudzba]
+GO
+/****** Object:  Table [dbo].[AkcijskiProizvodi]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AkcijskiProizvodi](
+	[AkcijskiProizvodID] [int] IDENTITY(1,1) NOT NULL,
+	[KorisnikID] [int] NOT NULL,
+	[ProizvodID] [int] NOT NULL,
+	[Popust] [decimal](18, 2) NOT NULL,
+	[DatumPocetka] [date] NOT NULL,
+	[DatumKraja] [date] NOT NULL,
+	[Status] [bit] NULL,
+ CONSTRAINT [PK_AkcijskiProizvodi] PRIMARY KEY CLUSTERED 
+(
+	[AkcijskiProizvodID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Dobavljaci]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Dobavljaci](
+	[DobavljacID] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](100) NOT NULL,
+	[KontaktOsoba] [nvarchar](100) NULL,
+	[Adresa] [nvarchar](100) NOT NULL,
+	[Telefon] [nvarchar](25) NOT NULL,
+	[Fax] [nvarchar](25) NULL,
+	[Web] [nvarchar](100) NULL,
+	[Email] [nvarchar](100) NOT NULL,
+	[ZiroRacuni] [nvarchar](255) NULL,
+	[Napomena] [nvarchar](500) NULL,
+	[Status] [bit] NOT NULL,
+ CONSTRAINT [PK_Dobavljaci] PRIMARY KEY CLUSTERED 
+(
+	[DobavljacID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Greska]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Greska](
+	[GreskaID] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](50) NOT NULL,
+	[Sadrzaj] [nvarchar](500) NOT NULL,
+	[DatumPostavljanja] [datetime] NOT NULL,
+	[Pregledana] [bit] NOT NULL,
+	[Status] [bit] NOT NULL,
+	[KupacID] [int] NOT NULL,
+ CONSTRAINT [PK_Greska] PRIMARY KEY CLUSTERED 
+(
+	[GreskaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[GreskaStavke]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[GreskaStavke](
+	[GreskaStavkeID] [int] IDENTITY(1,1) NOT NULL,
+	[GreskaID] [int] NOT NULL,
+	[KorisnikID] [int] NOT NULL,
+	[Komentar] [nvarchar](500) NULL,
+	[DatumPregleda] [datetime] NOT NULL,
+ CONSTRAINT [PK_GreskaStavkeID] PRIMARY KEY CLUSTERED 
+(
+	[GreskaStavkeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[IzlazStavke]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[IzlazStavke](
+	[IzlazStavkaID] [int] IDENTITY(1,1) NOT NULL,
+	[IzlazID] [int] NOT NULL,
+	[ProizvodID] [int] NOT NULL,
+	[Kolicina] [int] NOT NULL,
+	[Cijena] [decimal](18, 2) NOT NULL,
+	[Popust] [decimal](5, 2) NULL,
+ CONSTRAINT [PK_IzlazStavke] PRIMARY KEY CLUSTERED 
+(
+	[IzlazStavkaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Izlazi]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Izlazi](
+	[IzlazID] [int] IDENTITY(1,1) NOT NULL,
+	[BrojRacuna] [nvarchar](50) NOT NULL,
+	[Datum] [datetime] NOT NULL,
+	[KorisnikID] [int] NOT NULL,
+	[Zakljucen] [bit] NOT NULL,
+	[IznosBezPDV] [decimal](18, 2) NOT NULL,
+	[IznosSaPDV] [decimal](18, 2) NOT NULL,
+	[NarudzbaID] [int] NULL,
+	[SkladisteID] [int] NOT NULL,
+ CONSTRAINT [PK_Izlazi] PRIMARY KEY CLUSTERED 
+(
+	[IzlazID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[JediniceMjere]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[JediniceMjere](
+	[JedinicaMjereID] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](10) NOT NULL,
+ CONSTRAINT [PK_JediniceMjere] PRIMARY KEY CLUSTERED 
+(
+	[JedinicaMjereID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[KategorijeProizvoda]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[KategorijeProizvoda](
+	[KategorijaID] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](50) NOT NULL,
+	[Status] [bit] NOT NULL DEFAULT ((1)),
+ CONSTRAINT [PK_KategorijeProizvoda] PRIMARY KEY CLUSTERED 
+(
+	[KategorijaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Korisnici]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Korisnici](
+	[KorisnikID] [int] IDENTITY(1,1) NOT NULL,
+	[Ime] [nvarchar](50) NOT NULL,
+	[Prezime] [nvarchar](50) NOT NULL,
+	[Email] [nvarchar](100) NULL,
+	[Telefon] [nvarchar](20) NULL,
+	[KorisnickoIme] [nvarchar](50) NOT NULL,
+	[LozinkaHash] [nvarchar](50) NOT NULL,
+	[LozinkaSalt] [nvarchar](50) NOT NULL,
+	[Status] [bit] NOT NULL CONSTRAINT [DF_Korisnici_Status]  DEFAULT ((1)),
+ CONSTRAINT [PK_Korisnici] PRIMARY KEY CLUSTERED 
+(
+	[KorisnikID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [CS_Email] UNIQUE NONCLUSTERED 
+(
+	[Email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [CS_KorisnickoIme] UNIQUE NONCLUSTERED 
+(
+	[KorisnickoIme] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[KorisniciUloge]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[KorisniciUloge](
+	[KorisnikUlogaID] [int] IDENTITY(1,1) NOT NULL,
+	[KorisnikID] [int] NOT NULL,
+	[UlogaID] [int] NOT NULL,
+	[DatumIzmjene] [datetime] NOT NULL,
+ CONSTRAINT [PK_KorisniciUloge] PRIMARY KEY CLUSTERED 
+(
+	[KorisnikUlogaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Kupci]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Kupci](
+	[KupacID] [int] IDENTITY(1,1) NOT NULL,
+	[Ime] [nvarchar](50) NOT NULL,
+	[Prezime] [nvarchar](50) NOT NULL,
+	[DatumRegistracije] [datetime] NOT NULL,
+	[Email] [nvarchar](100) NOT NULL,
+	[KorisnickoIme] [nvarchar](50) NOT NULL,
+	[LozinkaHash] [nvarchar](50) NOT NULL,
+	[LozinkaSalt] [nvarchar](50) NOT NULL,
+	[Status] [bit] NOT NULL,
+ CONSTRAINT [PK_Kupci] PRIMARY KEY CLUSTERED 
+(
+	[KupacID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[NarudzbaStavke]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[NarudzbaStavke](
+	[NarudzbaStavkaID] [int] IDENTITY(1,1) NOT NULL,
+	[NarudzbaID] [int] NOT NULL,
+	[ProizvodID] [int] NOT NULL,
+	[Kolicina] [int] NOT NULL,
+ CONSTRAINT [PK_NarudzbaStavke] PRIMARY KEY CLUSTERED 
+(
+	[NarudzbaStavkaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Narudzbe]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Narudzbe](
+	[NarudzbaID] [int] IDENTITY(1,1) NOT NULL,
+	[BrojNarudzbe] [nvarchar](20) NOT NULL,
+	[KupacID] [int] NOT NULL,
+	[Datum] [datetime] NOT NULL,
+	[Status] [bit] NOT NULL,
+	[Otkazano] [bit] NULL,
+ CONSTRAINT [PK_Narudzbe] PRIMARY KEY CLUSTERED 
+(
+	[NarudzbaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Novosti]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING OFF
+GO
+CREATE TABLE [dbo].[Novosti](
+	[NovostID] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](50) NOT NULL,
+	[Sadrzaj] [nvarchar](500) NOT NULL,
+	[Slika] [varbinary](max) NULL,
+	[Datum] [datetime] NOT NULL,
+	[Status] [bit] NOT NULL,
+	[KorisnikID] [int] NOT NULL,
+ CONSTRAINT [PK_NovostID] PRIMARY KEY CLUSTERED 
+(
+	[NovostID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Ocjene]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Ocjene](
+	[OcjenaID] [int] IDENTITY(1,1) NOT NULL,
+	[ProizvodID] [int] NOT NULL,
+	[KupacID] [int] NOT NULL,
+	[Datum] [datetime] NOT NULL,
+	[Ocjena] [int] NOT NULL,
+ CONSTRAINT [PK_Ocjene] PRIMARY KEY CLUSTERED 
+(
+	[OcjenaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrijedlogKupca]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrijedlogKupca](
+	[PrijedlogKupcaID] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](50) NOT NULL,
+	[Sadrzaj] [nvarchar](500) NOT NULL,
+	[Datum] [datetime] NOT NULL,
+	[Status] [bit] NOT NULL,
+	[KupacID] [int] NOT NULL,
+ CONSTRAINT [PK_PrijedlogKupcaID] PRIMARY KEY CLUSTERED 
+(
+	[PrijedlogKupcaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PrijedlogKupcaStavke]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PrijedlogKupcaStavke](
+	[PrijedlogKupcaStavkaID] [int] IDENTITY(1,1) NOT NULL,
+	[Komentar] [nvarchar](500) NULL,
+	[Pregledan] [bit] NOT NULL,
+	[KorisnikID] [int] NOT NULL,
+ CONSTRAINT [PK_PrijedlogKupcaStavkaID] PRIMARY KEY CLUSTERED 
+(
+	[PrijedlogKupcaStavkaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Proizvodi]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Proizvodi](
+	[ProizvodID] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](50) NOT NULL,
+	[Sifra] [nvarchar](20) NOT NULL,
+	[Cijena] [decimal](5, 2) NOT NULL,
+	[KategorijaID] [int] NOT NULL,
+	[JedinicaMjereID] [int] NOT NULL,
+	[Slika] [varbinary](max) NULL,
+	[SlikaThumb] [varbinary](max) NULL,
+	[Status] [bit] NOT NULL CONSTRAINT [DF_Artikli_Status]  DEFAULT ((1)),
+ CONSTRAINT [PK_Proizvodi] PRIMARY KEY CLUSTERED 
+(
+	[ProizvodID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Skladista]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Skladista](
+	[SkladisteID] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](50) NOT NULL,
+	[Adresa] [nvarchar](150) NULL,
+	[Opis] [nvarchar](500) NULL,
+	[Status] [bit] NOT NULL DEFAULT ((1)),
+ CONSTRAINT [PK_Skladista] PRIMARY KEY CLUSTERED 
+(
+	[SkladisteID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[UlazStavke]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[UlazStavke](
+	[UlazStavkaID] [int] IDENTITY(1,1) NOT NULL,
+	[UlazID] [int] NOT NULL,
+	[ProizvodID] [int] NOT NULL,
+	[Kolicina] [int] NOT NULL,
+	[Cijena] [decimal](18, 2) NOT NULL,
+ CONSTRAINT [PK_UlazStavke] PRIMARY KEY CLUSTERED 
+(
+	[UlazStavkaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Ulazi]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Ulazi](
+	[UlazID] [int] IDENTITY(1,1) NOT NULL,
+	[BrojFakture] [nvarchar](20) NOT NULL,
+	[Datum] [datetime] NOT NULL,
+	[IznosRacuna] [decimal](18, 2) NOT NULL,
+	[PDV] [numeric](18, 2) NOT NULL,
+	[Napomena] [nvarchar](500) NULL,
+	[SkladisteID] [int] NOT NULL,
+	[KorisnikID] [int] NOT NULL,
+	[DobavljacID] [int] NOT NULL,
+ CONSTRAINT [PK_Ulazi] PRIMARY KEY CLUSTERED 
+(
+	[UlazID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Uloge]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Uloge](
+	[UlogaID] [int] IDENTITY(1,1) NOT NULL,
+	[Naziv] [nvarchar](50) NOT NULL,
+	[Opis] [nvarchar](200) NULL,
+ CONSTRAINT [PK_Uloge] PRIMARY KEY CLUSTERED 
+(
+	[UlogaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[AkcijskiProizvodi]  WITH CHECK ADD  CONSTRAINT [FK_AkcijskiProizvodi_Korisnici] FOREIGN KEY([KorisnikID])
+REFERENCES [dbo].[Korisnici] ([KorisnikID])
+GO
+ALTER TABLE [dbo].[AkcijskiProizvodi] CHECK CONSTRAINT [FK_AkcijskiProizvodi_Korisnici]
+GO
+ALTER TABLE [dbo].[AkcijskiProizvodi]  WITH CHECK ADD  CONSTRAINT [FK_AkcijskiProizvodi_Proizvodi] FOREIGN KEY([ProizvodID])
+REFERENCES [dbo].[Proizvodi] ([ProizvodID])
+GO
+ALTER TABLE [dbo].[AkcijskiProizvodi] CHECK CONSTRAINT [FK_AkcijskiProizvodi_Proizvodi]
+GO
+ALTER TABLE [dbo].[Greska]  WITH CHECK ADD  CONSTRAINT [FK_Greska_Kupci] FOREIGN KEY([KupacID])
+REFERENCES [dbo].[Kupci] ([KupacID])
+GO
+ALTER TABLE [dbo].[Greska] CHECK CONSTRAINT [FK_Greska_Kupci]
+GO
+ALTER TABLE [dbo].[GreskaStavke]  WITH CHECK ADD  CONSTRAINT [FK_GreskaStavke_Greska] FOREIGN KEY([GreskaID])
+REFERENCES [dbo].[Greska] ([GreskaID])
+GO
+ALTER TABLE [dbo].[GreskaStavke] CHECK CONSTRAINT [FK_GreskaStavke_Greska]
+GO
+ALTER TABLE [dbo].[GreskaStavke]  WITH CHECK ADD  CONSTRAINT [FK_GreskaStavke_Korisnici] FOREIGN KEY([KorisnikID])
+REFERENCES [dbo].[Korisnici] ([KorisnikID])
+GO
+ALTER TABLE [dbo].[GreskaStavke] CHECK CONSTRAINT [FK_GreskaStavke_Korisnici]
+GO
+ALTER TABLE [dbo].[IzlazStavke]  WITH CHECK ADD  CONSTRAINT [FK_IzlazStavke_Izlazi] FOREIGN KEY([IzlazID])
+REFERENCES [dbo].[Izlazi] ([IzlazID])
+GO
+ALTER TABLE [dbo].[IzlazStavke] CHECK CONSTRAINT [FK_IzlazStavke_Izlazi]
+GO
+ALTER TABLE [dbo].[IzlazStavke]  WITH CHECK ADD  CONSTRAINT [FK_IzlazStavke_Proizvodi] FOREIGN KEY([ProizvodID])
+REFERENCES [dbo].[Proizvodi] ([ProizvodID])
+GO
+ALTER TABLE [dbo].[IzlazStavke] CHECK CONSTRAINT [FK_IzlazStavke_Proizvodi]
+GO
+ALTER TABLE [dbo].[Izlazi]  WITH CHECK ADD  CONSTRAINT [FK_Izlazi_Korisnici] FOREIGN KEY([KorisnikID])
+REFERENCES [dbo].[Korisnici] ([KorisnikID])
+GO
+ALTER TABLE [dbo].[Izlazi] CHECK CONSTRAINT [FK_Izlazi_Korisnici]
+GO
+ALTER TABLE [dbo].[Izlazi]  WITH CHECK ADD  CONSTRAINT [FK_Izlazi_Narudzbe] FOREIGN KEY([NarudzbaID])
+REFERENCES [dbo].[Narudzbe] ([NarudzbaID])
+GO
+ALTER TABLE [dbo].[Izlazi] CHECK CONSTRAINT [FK_Izlazi_Narudzbe]
+GO
+ALTER TABLE [dbo].[Izlazi]  WITH CHECK ADD  CONSTRAINT [FK_Izlazi_Skladista] FOREIGN KEY([SkladisteID])
+REFERENCES [dbo].[Skladista] ([SkladisteID])
+GO
+ALTER TABLE [dbo].[Izlazi] CHECK CONSTRAINT [FK_Izlazi_Skladista]
+GO
+ALTER TABLE [dbo].[KorisniciUloge]  WITH CHECK ADD  CONSTRAINT [FK_KorisniciUloge_Korisnici] FOREIGN KEY([KorisnikID])
+REFERENCES [dbo].[Korisnici] ([KorisnikID])
+GO
+ALTER TABLE [dbo].[KorisniciUloge] CHECK CONSTRAINT [FK_KorisniciUloge_Korisnici]
+GO
+ALTER TABLE [dbo].[KorisniciUloge]  WITH CHECK ADD  CONSTRAINT [FK_KorisniciUloge_Uloge] FOREIGN KEY([UlogaID])
+REFERENCES [dbo].[Uloge] ([UlogaID])
+GO
+ALTER TABLE [dbo].[KorisniciUloge] CHECK CONSTRAINT [FK_KorisniciUloge_Uloge]
+GO
+ALTER TABLE [dbo].[NarudzbaStavke]  WITH CHECK ADD  CONSTRAINT [FK_NarudzbaStavke_Narudzbe] FOREIGN KEY([NarudzbaID])
+REFERENCES [dbo].[Narudzbe] ([NarudzbaID])
+GO
+ALTER TABLE [dbo].[NarudzbaStavke] CHECK CONSTRAINT [FK_NarudzbaStavke_Narudzbe]
+GO
+ALTER TABLE [dbo].[NarudzbaStavke]  WITH CHECK ADD  CONSTRAINT [FK_NarudzbaStavke_Proizvodi] FOREIGN KEY([ProizvodID])
+REFERENCES [dbo].[Proizvodi] ([ProizvodID])
+GO
+ALTER TABLE [dbo].[NarudzbaStavke] CHECK CONSTRAINT [FK_NarudzbaStavke_Proizvodi]
+GO
+ALTER TABLE [dbo].[Narudzbe]  WITH CHECK ADD  CONSTRAINT [FK_Narudzbe_Kupci] FOREIGN KEY([KupacID])
+REFERENCES [dbo].[Kupci] ([KupacID])
+GO
+ALTER TABLE [dbo].[Narudzbe] CHECK CONSTRAINT [FK_Narudzbe_Kupci]
+GO
+ALTER TABLE [dbo].[Novosti]  WITH CHECK ADD  CONSTRAINT [FK_Novosti_Korisnici] FOREIGN KEY([KorisnikID])
+REFERENCES [dbo].[Korisnici] ([KorisnikID])
+GO
+ALTER TABLE [dbo].[Novosti] CHECK CONSTRAINT [FK_Novosti_Korisnici]
+GO
+ALTER TABLE [dbo].[Ocjene]  WITH CHECK ADD  CONSTRAINT [FK_Ocjene_Kupci] FOREIGN KEY([KupacID])
+REFERENCES [dbo].[Kupci] ([KupacID])
+GO
+ALTER TABLE [dbo].[Ocjene] CHECK CONSTRAINT [FK_Ocjene_Kupci]
+GO
+ALTER TABLE [dbo].[Ocjene]  WITH CHECK ADD  CONSTRAINT [FK_Ocjene_Proizvodi] FOREIGN KEY([ProizvodID])
+REFERENCES [dbo].[Proizvodi] ([ProizvodID])
+GO
+ALTER TABLE [dbo].[Ocjene] CHECK CONSTRAINT [FK_Ocjene_Proizvodi]
+GO
+ALTER TABLE [dbo].[PrijedlogKupca]  WITH CHECK ADD  CONSTRAINT [FK_PrijedlogKupca_Kupci] FOREIGN KEY([KupacID])
+REFERENCES [dbo].[Kupci] ([KupacID])
+GO
+ALTER TABLE [dbo].[PrijedlogKupca] CHECK CONSTRAINT [FK_PrijedlogKupca_Kupci]
+GO
+ALTER TABLE [dbo].[PrijedlogKupcaStavke]  WITH CHECK ADD  CONSTRAINT [FK_PrijedlogKupcaStavke_Korisnici] FOREIGN KEY([KorisnikID])
+REFERENCES [dbo].[Korisnici] ([KorisnikID])
+GO
+ALTER TABLE [dbo].[PrijedlogKupcaStavke] CHECK CONSTRAINT [FK_PrijedlogKupcaStavke_Korisnici]
+GO
+ALTER TABLE [dbo].[Proizvodi]  WITH CHECK ADD  CONSTRAINT [FK_Proizvodi_JediniceMjere] FOREIGN KEY([JedinicaMjereID])
+REFERENCES [dbo].[JediniceMjere] ([JedinicaMjereID])
+GO
+ALTER TABLE [dbo].[Proizvodi] CHECK CONSTRAINT [FK_Proizvodi_JediniceMjere]
+GO
+ALTER TABLE [dbo].[Proizvodi]  WITH CHECK ADD  CONSTRAINT [FK_Proizvodi_KategorijeProizvoda] FOREIGN KEY([KategorijaID])
+REFERENCES [dbo].[KategorijeProizvoda] ([KategorijaID])
+GO
+ALTER TABLE [dbo].[Proizvodi] CHECK CONSTRAINT [FK_Proizvodi_KategorijeProizvoda]
+GO
+ALTER TABLE [dbo].[UlazStavke]  WITH CHECK ADD  CONSTRAINT [FK_UlazStavke_Proizvodi] FOREIGN KEY([ProizvodID])
+REFERENCES [dbo].[Proizvodi] ([ProizvodID])
+GO
+ALTER TABLE [dbo].[UlazStavke] CHECK CONSTRAINT [FK_UlazStavke_Proizvodi]
+GO
+ALTER TABLE [dbo].[UlazStavke]  WITH CHECK ADD  CONSTRAINT [FK_UlazStavke_Ulazi] FOREIGN KEY([UlazID])
+REFERENCES [dbo].[Ulazi] ([UlazID])
+GO
+ALTER TABLE [dbo].[UlazStavke] CHECK CONSTRAINT [FK_UlazStavke_Ulazi]
+GO
+ALTER TABLE [dbo].[Ulazi]  WITH CHECK ADD  CONSTRAINT [FK_Ulazi_Dobavljaci] FOREIGN KEY([DobavljacID])
+REFERENCES [dbo].[Dobavljaci] ([DobavljacID])
+GO
+ALTER TABLE [dbo].[Ulazi] CHECK CONSTRAINT [FK_Ulazi_Dobavljaci]
+GO
+ALTER TABLE [dbo].[Ulazi]  WITH CHECK ADD  CONSTRAINT [FK_Ulazi_Korisnici] FOREIGN KEY([KorisnikID])
+REFERENCES [dbo].[Korisnici] ([KorisnikID])
+GO
+ALTER TABLE [dbo].[Ulazi] CHECK CONSTRAINT [FK_Ulazi_Korisnici]
+GO
+ALTER TABLE [dbo].[Ulazi]  WITH CHECK ADD  CONSTRAINT [FK_Ulazi_Skladista] FOREIGN KEY([SkladisteID])
+REFERENCES [dbo].[Skladista] ([SkladisteID])
+GO
+ALTER TABLE [dbo].[Ulazi] CHECK CONSTRAINT [FK_Ulazi_Skladista]
+GO
+/****** Object:  StoredProcedure [dbo].[esp_AkcijskiProizvodi_SelectTrenutnoAktivni]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_AkcijskiProizvodi_SelectTrenutnoAktivni]
+AS
+SELECT P.ProizvodID, AK.AkcijskiProizvodID, P.Naziv, P.Sifra, P.Cijena, AK.Popust, CAST(P.Cijena - (P.Cijena * AK.Popust) AS decimal(18, 2)) AS 'SaPopustom', 
+		AK.DatumPocetka, AK.DatumKraja, DATEDIFF(day, GETDATE(), AK.DatumKraja) AS 'UkupnoDana', P.SlikaThumb
+FROM AkcijskiProizvodi AS AK INNER JOIN Proizvodi AS P
+	ON AK.ProizvodID = P.ProizvodID
+	WHERE AK.DatumKraja >= GETDATE() AND AK.Status = 1
+	ORDER BY 'UkupnoDana'
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Dobavljaci_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[esp_Dobavljaci_Insert]
+(
+	@Naziv NVARCHAR(100),
+	@KontaktOsoba NVARCHAR(100),
+	@Adresa NVARCHAR(100),
+	@Telefon NVARCHAR(25),
+	@Fax NVARCHAR(25),
+	@Web NVARCHAR(100),
+	@Email NVARCHAR(100), 
+	@ZiroRacuni NVARCHAR(255),
+	@Napomena NVARCHAR(500),
+	@Status BIT
+)
+AS 
+INSERT INTO Dobavljaci (Naziv, KontaktOsoba, Adresa, Telefon, Fax, Web, Email, ZiroRacuni, Napomena, Status)
+	VALUES (@Naziv, @KontaktOsoba, @Adresa, @Telefon, @Fax, @Web, @Email, @ZiroRacuni, @Napomena, @Status)
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Dobavljaci_SelectByNaziv_KOsoba]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Dobavljaci_SelectByNaziv_KOsoba]
+(
+	@Naziv NVARCHAR(100)
+)
+AS
+SELECT *
+FROM [dbo].[Dobavljaci]
+WHERE (LOWER(Naziv) LIKE LOWER(@Naziv) + '%' OR LOWER(KontaktOsoba) LIKE LOWER(@Naziv) + '%') AND Status = 1
+GO
+/****** Object:  StoredProcedure [dbo].[esp_IzlaziStavkeByIzlazID]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_IzlaziStavkeByIzlazID]
+(
+	@IzlazID INT
+)
+AS
+SELECT I.BrojRacuna, P.Sifra, P.Naziv, IZS.Cijena, IZS.Kolicina, I.IznosSaPDV, I.IznosBezPDV, I.Datum
+FROM Izlazi AS I INNER JOIN IzlazStavke AS IZS
+	ON I.IzlazID = IZS.IzlazID INNER JOIN Proizvodi AS P
+	ON IZS.ProizvodID = P.ProizvodID
+	WHERE I.IzlazID = @IzlazID
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Izlazi_InsertByNarudzbaID]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Izlazi_InsertByNarudzbaID]
+(
+	@NarudzbaID INT,
+	@IznosSaPDV DECIMAL(18,2),
+	@IznosBezPDV DECIMAL (18,2),
+	@SkladisteID INT,
+	@KorisnikID INT
+)
+AS
+	
+	DECLARE @BrojRacuna INT = (SELECT TOP 1 LEFT(BrojRacuna, CHARINDEX('/', BrojRacuna, 0) - 1)
+										FROM Izlazi 
+										WHERE YEAR(Datum) = YEAR(GETDATE())
+										ORDER BY IzlazID DESC);
+
+	IF @BrojRacuna IS NULL
+		SET @BrojRacuna = 0;
+
+	INSERT INTO Izlazi(BrojRacuna, Datum, KorisnikID, Zakljucen, IznosSaPDV, IznosBezPDV, NarudzbaID, SkladisteID)
+	VALUES (CONVERT(NVARCHAR, @BrojRacuna + 1) + '/' + RIGHT(CONVERT(NVARCHAR, YEAR(GETDATE())), 2), 
+	        GETDATE(), @KorisnikID, 1, @IznosSaPDV, @IznosBezPDV, @NarudzbaID, @SkladisteID)
+
+
+	INSERT INTO IzlazStavke
+	SELECT @@IDENTITY, T1.ProizvodID, T1.Kolicina, T2.Cijena, 0
+	FROM NarudzbaStavke AS T1 INNER JOIN Proizvodi AS T2
+	     ON T1.ProizvodID = T2.ProizvodID
+	WHERE NarudzbaID = @NarudzbaID
+
+
+	SELECT @@IDENTITY, T1.ProizvodID, T1.Kolicina, T2.Cijena, 0
+	FROM NarudzbaStavke AS T1 INNER JOIN Proizvodi AS T2
+	     ON T1.ProizvodID = T2.ProizvodID
+-- Dodan kod za dodavanje popusta
+	UPDATE IzlazStavke
+	SET Popust = (SELECT AK.Popust 
+								FROM AkcijskiProizvodi AS AK INNER JOIN Proizvodi AS P
+								ON AK.ProizvodID = P.ProizvodID
+								WHERE AK.DatumKraja >= GETDATE() AND AK.Status = 1 AND IzlazStavke.ProizvodID = P.ProizvodID)
+	WHERE  IzlazStavke.ProizvodID = (SELECT AK.ProizvodID
+										FROM AkcijskiProizvodi AS AK INNER JOIN Proizvodi AS P
+											ON AK.ProizvodID = P.ProizvodID
+											WHERE AK.DatumKraja >= GETDATE() AND AK.Status = 1 AND IzlazStavke.ProizvodID = AK.ProizvodID)
+
+
+	UPDATE Narudzbe
+	SET Status = 0
+	WHERE NarudzbaID = @NarudzbaID
+-------------------------------------------------------------------------------------------
+
+--Stanje skladišta
+
+GO
+/****** Object:  StoredProcedure [dbo].[esp_KategorijaProiz_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_KategorijaProiz_Insert]
+(
+	@Naziv nvarchar(50),
+	@Status bit
+)
+AS
+INSERT INTO KategorijeProizvoda (Naziv, Status)
+VALUES (@Naziv, @Status)
+GO
+/****** Object:  StoredProcedure [dbo].[esp_KorisniciUloge_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_KorisniciUloge_Insert]
+(
+	@KorisnikID INT, 
+	@UlogaID INT
+)
+AS 
+	INSERT INTO KorisniciUloge (KorisnikID, UlogaID, DatumIzmjene)
+	VALUES (@KorisnikID, @UlogaID, GETDATE())
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Korisnici_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Korisnici_Insert]
+(
+	@Ime NVARCHAR (50),
+	@Prezime NVARCHAR(50),
+	@Email NVARCHAR (100), 
+	@Telefon NVARCHAR(20),
+	@KorisnickoIme NVARCHAR(50),
+	@LozinkaSalt NVARCHAR(50),
+	@LozinkaHash NVARCHAR(50)
+)
+AS 
+	INSERT INTO Korisnici (Ime, Prezime, Email, Telefon, KorisnickoIme, LozinkaSalt, LozinkaHash)
+	VALUES (@Ime, @Prezime, @Email, @Telefon, @KorisnickoIme, @LozinkaSalt, @LozinkaHash)
+
+	SELECT @@IDENTITY
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Korisnici_SelectByImePrezime]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[esp_Korisnici_SelectByImePrezime]
+(
+    @ImePrezime nvarchar(100)
+)
+AS
+BEGIN
+	
+	Select *
+	from Korisnici 
+	where @ImePrezime is null or
+	LOWER(Ime + ' ' + Prezime) like LOWER(@ImePrezime)+ '%' or
+		  LOWER(Prezime + ' ' + Ime) like LOWER(@ImePrezime)+ '%'
+	
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Korisnici_SelectByKorisnickoIme]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Korisnici_SelectByKorisnickoIme]
+(
+	@KorisnickoIme NVARCHAR(50)
+)
+AS
+    SELECT *
+	FROM Korisnici
+	WHERE KorisnickoIme = @KorisnickoIme AND Status=1
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Korisnici_SelectBy_ImeP_KIme_Akt]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Korisnici_SelectBy_ImeP_KIme_Akt]
+(
+	@ImePrezime NVARCHAR(50)
+)
+AS
+SELECT  K.KorisnikID, K.Ime, K.Prezime, K.Email, K.Telefon, K.KorisnickoIme,
+		K.LozinkaHash, K.LozinkaSalt, K.Status, U.Naziv AS 'Naziv uloge'
+FROM Korisnici AS K INNER JOIN KorisniciUloge AS KU
+	ON K.KorisnikID = KU.KorisnikID INNER JOIN Uloge AS U
+	ON KU.UlogaID = U.UlogaID
+	WHERE (LOWER(K.Ime + ' ' + K.Prezime) LIKE LOWER(@ImePrezime) + '%'
+			OR LOWER(K.Prezime + ' ' + K.Ime) LIKE LOWER(@ImePrezime) + '%'
+			OR LOWER(K.KorisnickoIme) LIKE LOWER(@ImePrezime) + '%')
+			AND K.Status = 1
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Korisnici_SelectBy_ImeP_KIme_NeAkt]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Korisnici_SelectBy_ImeP_KIme_NeAkt]
+(
+	@ImePrezime NVARCHAR(50)
+)
+AS
+SELECT  K.KorisnikID, K.Ime, K.Prezime, K.Email, K.Telefon, K.KorisnickoIme,
+		K.LozinkaHash, K.LozinkaSalt, K.Status, U.Naziv AS 'Naziv uloge'
+FROM Korisnici AS K INNER JOIN KorisniciUloge AS KU
+	ON K.KorisnikID = KU.KorisnikID INNER JOIN Uloge AS U
+	ON KU.UlogaID = U.UlogaID
+	WHERE (LOWER(K.Ime + ' ' + K.Prezime) LIKE LOWER(@ImePrezime) + '%'
+			OR LOWER(K.Prezime + ' ' + K.Ime) LIKE LOWER(@ImePrezime) + '%'
+			OR LOWER(K.KorisnickoIme) LIKE LOWER(@ImePrezime) + '%')
+			AND K.Status = 0
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Kupci_SelectByFUsername]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Kupci_SelectByFUsername]
+(
+	@ImePrezime NVARCHAR(100)
+)
+AS
+SELECT *
+FROM Kupci
+ WHERE (LOWER(Ime + ' ' + Prezime) LIKE LOWER(@ImePrezime) + '%'
+			OR LOWER(Prezime + ' ' + Ime) LIKE LOWER(@ImePrezime) + '%'
+			OR LOWER(KorisnickoIme) LIKE LOWER(@ImePrezime) + '%')
+			AND Status = 1
+GO
+/****** Object:  StoredProcedure [dbo].[esp_NarudzbaStavke_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_NarudzbaStavke_Insert]
+(
+	@NarudzbaID INT,
+	@ProizvodID INT,
+	@Kolicina INT
+)
+AS
+	INSERT INTO NarudzbaStavke(NarudzbaID, ProizvodID, Kolicina)
+	VALUES (@NarudzbaID, @ProizvodID, @Kolicina)
+
+--------------------------------------------------------------------------------
+GO
+/****** Object:  StoredProcedure [dbo].[esp_NarudzbaStavke_SelectByNarudzbaID]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_NarudzbaStavke_SelectByNarudzbaID]
+(
+	@NarudzbaID INT
+)
+AS
+SELECT NS.NarudzbaStavkaID, N.BrojNarudzbe, N.Datum, P.Naziv AS 'Proizvod', P.Sifra, P.Cijena, NS.Kolicina * P.Cijena AS 'Iznos', P.SlikaThumb, KP.Naziv AS 'Kategorija', CAST(AVG(1.0 * CAST(ISNULL(O.Ocjena, 0) AS decimal(10, 2))) AS decimal(10,2)) AS 'Prosjecna Ocjena', NS.Kolicina, NS.ProizvodID
+FROM Narudzbe AS N INNER JOIN NarudzbaStavke AS NS
+	ON N.NarudzbaID = NS.NarudzbaID INNER JOIN Proizvodi AS P
+	ON NS.ProizvodID = P.ProizvodID INNER JOIN KategorijeProizvoda AS KP
+	ON P.KategorijaID = KP.KategorijaID LEFT JOIN Ocjene AS O
+	ON O.ProizvodID = P.ProizvodID
+	WHERE N.NarudzbaID = @NarudzbaID
+	GROUP BY NS.NarudzbaStavkaID, N.BrojNarudzbe, N.Datum, P.Naziv, P.Sifra, P.Cijena, P.SlikaThumb, KP.Naziv, NS.Kolicina, NS.ProizvodID
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Narudzbe_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Narudzbe_Insert]
+(
+	@BrojNarudzbe NVARCHAR(20),
+	@KupacID INT,
+	@Datum DATETIME
+)
+AS
+	INSERT INTO Narudzbe(BrojNarudzbe, KupacID, Datum, Status, Otkazano)
+	VALUES (@BrojNarudzbe, @KupacID, @Datum, 1, 0)
+
+	SELECT @@IDENTITY
+
+--------------------------------------------------------------------------------
+
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Narudzbe_SelectAktivne]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Narudzbe_SelectAktivne]
+AS
+	SELECT T1.NarudzbaID, T1.BrojNarudzbe, T1.KupacID, T1.Datum, T2.Ime + ' ' + T2.Prezime AS Kupac, 
+	       SUM(T3.Kolicina * T4.Cijena) AS Iznos
+	FROM Narudzbe AS T1 INNER JOIN Kupci AS T2
+		 ON T1.KupacID = T2.KupacID INNER JOIN NarudzbaStavke AS T3
+		 ON T1.NarudzbaID = T3.NarudzbaID INNER JOIN Proizvodi AS T4
+		 ON T3.ProizvodID = T4.ProizvodID
+	WHERE T1.Status = 1
+	GROUP BY T1.NarudzbaID, T1.BrojNarudzbe, T1.KupacID, T1.Datum, T2.Ime, T2.Prezime
+	ORDER BY Datum ASC
+-------------------------------------------------------------------------------------------
+
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Narudzbe_SelectByDatum]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[esp_Narudzbe_SelectByDatum]
+(
+	@Datum NVARCHAR(50),
+	@KupacID INT
+)
+AS
+	IF @Datum = ''
+	BEGIN
+SELECT N.NarudzbaID, N.BrojNarudzbe, P.Naziv, P.Sifra, P.Cijena, SUM(NS.Kolicina) AS 'Kolicina', K.Naziv AS 'Kategorija', P.SlikaThumb, N.Datum 
+FROM Narudzbe AS N INNER JOIN NarudzbaStavke AS NS
+		ON N.NarudzbaID = NS.NarudzbaID INNER JOIN Proizvodi AS P
+		ON NS.ProizvodID = P.ProizvodID INNER JOIN KategorijeProizvoda AS K
+		ON P.KategorijaID = K.KategorijaID
+		WHERE N.KupacID = @KupacID
+		GROUP BY N.NarudzbaID, N.BrojNarudzbe, N.Datum, P.Naziv, P.Sifra, P.Cijena, P.SlikaThumb, K.Naziv
+		ORDER BY N.NarudzbaID DESC
+
+		END
+
+		ELSE
+		BEGIN 
+SELECT N.NarudzbaID, N.BrojNarudzbe, P.Naziv, P.Sifra, P.Cijena, SUM(NS.Kolicina) AS 'Kolicina', K.Naziv AS 'Kategorija', P.SlikaThumb, N.Datum 
+FROM Narudzbe AS N INNER JOIN NarudzbaStavke AS NS
+		ON N.NarudzbaID = NS.NarudzbaID INNER JOIN Proizvodi AS P
+		ON NS.ProizvodID = P.ProizvodID INNER JOIN KategorijeProizvoda AS K
+		ON P.KategorijaID = K.KategorijaID
+		WHERE N.KupacID = @KupacID AND N.Datum = @Datum
+		GROUP BY N.NarudzbaID, N.BrojNarudzbe, N.Datum, P.Naziv, P.Sifra, P.Cijena, P.SlikaThumb, K.Naziv
+		ORDER BY N.NarudzbaID DESC
+		END
+
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Narudzbe_SelectByKupac]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Narudzbe_SelectByKupac]
+(
+	@KupacID INT
+)
+AS
+SELECT N.NarudzbaID, N.BrojNarudzbe, N.Datum,SUM(NS.Kolicina) AS 'Kolicina'
+FROM Narudzbe AS N INNER JOIN NarudzbaStavke AS NS
+	ON N.NarudzbaID = NS.NarudzbaID
+	WHERE N.KupacID = @KupacID 
+	GROUP BY N.NarudzbaID, N.BrojNarudzbe, N.Datum
+	ORDER BY N.BrojNarudzbe DESC
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Narudzbe_SelectByKupacSum]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE  [dbo].[esp_Narudzbe_SelectByKupacSum]
+(
+	@KupacID INT
+)
+AS
+SELECT N.NarudzbaID, SUM(P.Cijena * NS.Kolicina) AS 'Ukupno', SUM(NS.Kolicina) AS 'Kolicina', N.Datum 
+FROM Narudzbe AS N INNER JOIN NarudzbaStavke AS NS
+		ON N.NarudzbaID = NS.NarudzbaID INNER JOIN Proizvodi AS P
+		ON NS.ProizvodID = P.ProizvodID
+	WHERE N.KupacID = @KupacID
+		GROUP BY N.NarudzbaID, N.Datum 
+		ORDER BY N.NarudzbaID
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Narudzbe_SelectByNarudzbaId]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Narudzbe_SelectByNarudzbaId]
+(
+	@NarudzbaId INT,
+	@KupacID INT
+)
+AS
+SELECT N.NarudzbaID, N.BrojNarudzbe, P.Naziv, P.Sifra, P.Cijena, SUM(NS.Kolicina) AS 'Kolicina', K.Naziv AS 'Kategorija', P.SlikaThumb, N.Datum 
+FROM Narudzbe AS N INNER JOIN NarudzbaStavke AS NS
+		ON N.NarudzbaID = NS.NarudzbaID INNER JOIN Proizvodi AS P
+		ON NS.ProizvodID = P.ProizvodID INNER JOIN KategorijeProizvoda AS K
+		ON P.KategorijaID = K.KategorijaID
+		WHERE N.KupacID = @KupacID AND N.NarudzbaID = @NarudzbaId
+		GROUP BY N.NarudzbaID, N.BrojNarudzbe, N.Datum, P.Naziv, P.Sifra, P.Cijena, P.SlikaThumb, K.Naziv
+		ORDER BY N.NarudzbaID DESC
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Ocjene_SelectAll]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Ocjene_SelectAll]
+AS
+SELECT P.Naziv, P.Sifra, P.SlikaThumb, K.Ime, K.Prezime, K.Email, O.Ocjena, O.Datum 
+FROM Ocjene AS O INNER JOIN Proizvodi AS P
+		ON O.ProizvodID = P.ProizvodID INNER JOIN Kupci AS K
+		ON O.KupacID = K.KupacID
+		WHERE O.Ocjena IS NOT NULL
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Ocjene_SelectOcjenjeniProizvodiByKupadID]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Ocjene_SelectOcjenjeniProizvodiByKupadID]
+(
+	@KupacID INT 
+)
+AS
+SELECT DISTINCT NS.ProizvodID, O.KupacID, O.Ocjena
+ FROM NarudzbaStavke AS NS
+	RIGHT JOIN Ocjene AS O ON NS.ProizvodID = O.ProizvodID
+	WHERE O.KupacID = @KupacID
+GO
+/****** Object:  StoredProcedure [dbo].[esp_PrijedlogKupca_SelectAll]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_PrijedlogKupca_SelectAll]
+AS
+SELECT PK.PrijedlogKupcaID, K.Ime, K.Prezime, K.Email, PK.Naziv, PK.Sadrzaj, PK.Datum
+FROM Kupci AS K INNER JOIN PrijedlogKupca AS PK
+		ON K.KupacID = PK.KupacID
+		ORDER BY PK.PrijedlogKupcaID DESC
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Proizvodi_Insert]
+(
+	@Naziv NVARCHAR (50),
+	@Sifra NVARCHAR (50),
+	@Cijena DECIMAL (10,2),
+	@KategorijaID INT,
+	@JedinicaMjereID INT,
+	@Slika VARBINARY (MAX) = NULL,
+	@SlikaThumb VARBINARY (MAX) = NULL
+)
+AS
+    INSERT INTO Proizvodi (Naziv, Sifra, Cijena, KategorijaID, JedinicaMjereID, Slika, SlikaThumb)
+	VALUES (@Naziv, @Sifra, @Cijena, @KategorijaID, @JedinicaMjereID, @Slika, @SlikaThumb)
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_SelectAktivni]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Proizvodi_SelectAktivni]
+AS
+SELECT ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+	FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+	     ON T1.JedinicaMjereID = T2.JedinicaMjereID
+		 WHERE Status = 1
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_SelectAll]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Proizvodi_SelectAll]
+AS
+SELECT ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+	FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+	     ON T1.JedinicaMjereID = T2.JedinicaMjereID
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_SelectById]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE PROCEDURE [dbo].[esp_Proizvodi_SelectById]
+(
+	@ProizvodId INT
+)
+AS
+BEGIN
+
+SELECT P.*, K.Naziv AS 'Kategorija', AVG(1.0 * O.Ocjena) AS ProsjecnaOcjena
+	FROM Proizvodi AS P INNER JOIN KategorijeProizvoda AS K
+	ON P.KategorijaID = K.KategorijaID LEFT JOIN Ocjene AS O
+	ON P.ProizvodID = O.OcjenaID
+	WHERE P.ProizvodID = @ProizvodId
+	GROUP BY P.ProizvodID, P.Naziv, P.Sifra, P.Cijena, P.KategorijaID, P.JedinicaMjereID, 
+			 P.Slika, P.SlikaThumb, P.Status, K.Naziv
+
+END
+
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_SelectByNaziv]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Proizvodi_SelectByNaziv]
+(
+	@Naziv NVARCHAR(50)
+)
+AS
+	IF @Naziv = '' 
+	BEGIN
+		SELECT TOP 5 ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+		FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+			 ON T1.JedinicaMjereID = T2.JedinicaMjereID
+		WHERE Status = 1
+		ORDER BY KategorijaID DESC
+	END
+
+	ELSE 
+	BEGIN
+	SELECT TOP 5 ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+		FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+			 ON T1.JedinicaMjereID = T2.JedinicaMjereID
+		WHERE (LOWER(T1.Naziv) LIKE LOWER(@Naziv + '%')) AND Status = 1
+		ORDER BY KategorijaID DESC
+	END
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_SelectBySifra]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Proizvodi_SelectBySifra]
+(
+	@Sifra NVARCHAR(20)
+)
+AS
+SELECT ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+	FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+	     ON T1.JedinicaMjereID = T2.JedinicaMjereID
+WHERE Sifra LIKE @Sifra + '%'
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_SelectBySifraList]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+Create PROCEDURE [dbo].[esp_Proizvodi_SelectBySifraList]
+(
+	@Sifra NVARCHAR(20)
+)
+AS
+if @Sifra=''
+begin
+SELECT top 5 ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+	FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+	     ON T1.JedinicaMjereID = T2.JedinicaMjereID
+WHERE Status = 1
+Order by KategorijaID desc
+end
+
+ELSE 
+begin
+SELECT top 5 ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+	FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+	     ON T1.JedinicaMjereID = T2.JedinicaMjereID
+		 where(lower(Sifra) like  lower(@Sifra+'%')) and Status = 1
+Order by KategorijaID desc
+end
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_SelectBySkladiste]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Proizvodi_SelectBySkladiste]
+(
+	@SkladisteID INT
+)
+AS
+	SELECT T5.ProizvodID, T5.SlikaThumb, T5.Naziv, T5.Sifra, T5.Cijena,
+           SUM(DISTINCT T3.Kolicina) - ISNULL(SUM(DISTINCT T4.Kolicina),0) AS Kolicina
+	FROM Ulazi AS T1 LEFT JOIN Izlazi AS T2
+		 ON T1.SkladisteID = T2.SkladisteID INNER JOIN UlazStavke AS T3
+		 ON T1.UlazID = T3.UlazID LEFT JOIN IzlazStavke AS T4
+		 ON T2.IzlazID = T4.IzlazID AND T4.ProizvodID = T3.ProizvodID INNER JOIN Proizvodi AS T5
+		 ON T3.ProizvodID = T5.ProizvodID
+	WHERE T1.SkladisteID = @SkladisteID
+	GROUP BY T5.ProizvodID, T5.SlikaThumb, T5.Naziv, T5.Sifra, T5.Cijena
+	ORDER BY Kolicina
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_SelectByVrsta]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Proizvodi_SelectByVrsta]
+(
+	@KategorijaID INT
+)
+AS
+	IF @KategorijaID = 0
+	BEGIN
+		SELECT TOP 5 ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+		FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+			 ON T1.JedinicaMjereID = T2.JedinicaMjereID
+		WHERE Status = 1
+		ORDER BY KategorijaID DESC
+	END
+
+	ELSE 
+	BEGIN
+	SELECT ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+		FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+			 ON T1.JedinicaMjereID = T2.JedinicaMjereID
+		WHERE KategorijaID = @KategorijaID AND Status = 1
+		ORDER BY KategorijaID DESC
+	END
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Proizvodi_SelectNeAktivni]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Proizvodi_SelectNeAktivni]
+AS
+SELECT ProizvodID, T1.Naziv, Sifra, Cijena, T2.Naziv AS JedMjere, SlikaThumb, Status
+	FROM Proizvodi AS T1 INNER JOIN JediniceMjere AS T2
+	     ON T1.JedinicaMjereID = T2.JedinicaMjereID
+		 WHERE Status = 0
+GO
+/****** Object:  StoredProcedure [dbo].[esp_SelectProizvod_BySkladisteStanje]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_SelectProizvod_BySkladisteStanje]
+(
+	@SkladisteID INT
+)
+as
+select P.ProizvodID, P.Sifra, P.Naziv, US.Cijena, US.Kolicina, P.SlikaThumb 
+FROM Proizvodi AS P INNER JOIN UlazStavke AS US 
+	ON P.ProizvodID = US.ProizvodID INNER JOIN Ulazi AS U
+	ON US.UlazID = U.UlazID INNER JOIN Skladista AS S
+	ON S.SkladisteID = U.SkladisteID
+	WHERE S.SkladisteID = @SkladisteID
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Select_NeocjenjeniKupljeniProizvodi_ByKupacID]
+(
+	@KupacID INT
+)
+AS
+SELECT DISTINCT  NS.ProizvodID, P.Naziv, K.Naziv AS 'Kategorija', P.SlikaThumb
+	FROM NarudzbaStavke AS NS INNER JOIN Narudzbe AS N
+	ON NS.NarudzbaID = N.NarudzbaID INNER JOIN Proizvodi AS P
+	ON NS.ProizvodID = P.ProizvodID INNER JOIN KategorijeProizvoda AS K
+	ON P.KategorijaID = K.KategorijaID
+	WHERE N.KupacID = @KupacID AND (NS.ProizvodID NOT IN (SELECT DISTINCT NS.ProizvodID
+												 FROM NarudzbaStavke AS NS
+													RIGHT JOIN Ocjene AS O ON NS.ProizvodID = O.ProizvodID
+													WHERE O.KupacID = @KupacID))
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Skladiste_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Skladiste_Insert]
+(
+	@Naziv NVARCHAR (50),
+	@Adresa NVARCHAR (150),
+	@Opis NVARCHAR (500),
+	@Status bit
+)
+AS
+INSERT INTO Skladista (Naziv, Adresa, Opis, Status)
+	VALUES (@Naziv, @Adresa, @Opis, @Status)
+
+
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Skladiste_SelectByNaziv]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Skladiste_SelectByNaziv]
+(
+	@Naziv NVARCHAR (50)
+)
+AS 
+SELECT * 
+FROM Skladista
+WHERE LOWER(Naziv) LIKE LOWER(@Naziv) + '%'
+GO
+/****** Object:  StoredProcedure [dbo].[esp_UlaziStavke_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_UlaziStavke_Insert]
+(
+	@UlazID INT, 
+	@ProizvodID INT, 
+	@Kolicina INT, 
+	@Cijena DECIMAL(18, 2)
+)
+AS
+INSERT INTO UlazStavke (UlazID, ProizvodID, Kolicina, Cijena)
+		VALUES (@UlazID, @ProizvodID, @Kolicina, @Cijena)
+GO
+/****** Object:  StoredProcedure [dbo].[esp_UlaziStavke_SelectByUlazID]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_UlaziStavke_SelectByUlazID]
+(
+	@UlazID INT
+)
+AS
+SELECT U.UlazID, U.BrojFakture, P.Naziv, P.Sifra, US.Kolicina,
+	   US.Cijena,  US.Cijena * US.Kolicina AS 'Ukupno', U.PDV,U.IznosRacuna, U.Datum, U.Napomena
+FROM Ulazi AS U INNER JOIN UlazStavke AS US
+	ON U.UlazID = US.UlazID INNER JOIN Proizvodi AS P
+	ON US.ProizvodID = P.ProizvodID
+	WHERE U.UlazID = @UlazID
+GO
+/****** Object:  StoredProcedure [dbo].[esp_Ulazi_Insert]    Script Date: 9/23/2018 12:47:00 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[esp_Ulazi_Insert]
+(
+	@BrojFakutre NVARCHAR(20),
+	@Datum DATETIME, 
+	@IznosRacuna DECIMAL(18, 2),
+	@PDV NUMERIC(18,2),
+	@Napomena NVARCHAR(500),
+	@SkladisteID INT, 
+	@KorisnikID INT, 
+	@DobavljacID INT
+)
+AS 
+	INSERT INTO Ulazi (BrojFakture, Datum, IznosRacuna,PDV, Napomena, SkladisteID, KorisnikID, DobavljacID)
+	VALUES (@BrojFakutre, @Datum, @IznosRacuna, @PDV, @Napomena, @SkladisteID, @KorisnikID, @DobavljacID)
+
+	SELECT @@IDENTITY
+GO
+USE [master]
+GO
+ALTER DATABASE [marketNarudzba] SET  READ_WRITE 
+GO
